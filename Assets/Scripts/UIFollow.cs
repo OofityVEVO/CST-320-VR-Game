@@ -12,8 +12,18 @@ public class UIFollow : MonoBehaviour
     public XRNode inputSource = XRNode.RightHand; // Change to LeftHand if needed
     private bool isVisible = false;
 
+    private bool played = false;
+
+    public AudioClip openUIAudio;
+    public AudioClip closeUIAudio;
+
+
+    private AudioSource source;
+
     void Start()
     {
+        source = GetComponent<AudioSource>();
+
         if (uiPanel != null)
             uiPanel.SetActive(false); // Start hidden
     }
@@ -38,6 +48,13 @@ public class UIFollow : MonoBehaviour
         else
         {
             ToggleUI(false);
+
+        }
+
+        if(played)
+        {
+            source.PlayOneShot(closeUIAudio);
+            played = false;
         }
     }
 
@@ -47,6 +64,12 @@ public class UIFollow : MonoBehaviour
         {
             isVisible = state;
             uiPanel.SetActive(state);
+        }
+
+        if(!played)
+        {
+            source.PlayOneShot(openUIAudio);
+            played = true;
         }
     }
 }

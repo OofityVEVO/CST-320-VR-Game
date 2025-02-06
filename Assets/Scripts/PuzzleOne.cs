@@ -24,7 +24,7 @@ public class PuzzleOne : MonoBehaviour
 
     void PuzzleSolve()
     {
-
+        Debug.Log("Mochi Escaped!! :DD");
     }
 
 
