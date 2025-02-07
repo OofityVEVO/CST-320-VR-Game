@@ -53,7 +53,7 @@ public class UIFollow : MonoBehaviour
 
         if(played)
         {
-            source.PlayOneShot(closeUIAudio);
+            //source.PlayOneShot(closeUIAudio);
             played = false;
         }
     }
@@ -64,11 +64,11 @@ public class UIFollow : MonoBehaviour
         {
             isVisible = state;
             uiPanel.SetActive(state);
+            source.PlayOneShot(openUIAudio);
         }
 
         if(!played)
         {
-            source.PlayOneShot(openUIAudio);
             played = true;
         }
     }
