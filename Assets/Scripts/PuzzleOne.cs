@@ -1,24 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
+using UnityEngine.Events; 
 
 public class PuzzleOne : MonoBehaviour
 {
-    UnityEvent MochiEvent1;
+    public UnityEvent MochiEvent1;
+
 
     void Start()
     {
-
-        MochiEvent1.AddListener(PuzzleSolve);
+        MochiEvent1 = new UnityEvent(); 
+        MochiEvent1.AddListener(PuzzleSolve); 
     }
 
     void OnTriggerEnter(Collider collide)
     {
-        if (collide.tag == "ChitterKin")
+        if (collide.CompareTag("ChitterKin")) 
         {
             MochiEvent1.Invoke();
-            MochiEvent1.RemoveListener(PuzzleSolve);
+            MochiEvent1.RemoveListener(PuzzleSolve); 
         }
     }
 
@@ -26,6 +25,4 @@ public class PuzzleOne : MonoBehaviour
     {
         Debug.Log("Mochi Escaped!! :DD");
     }
-
-
 }
