@@ -13859,6 +13859,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49634238061b0a14fb2219ef54b092a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MochiEvent1:
+    m_PersistentCalls:
+      m_Calls: []
+    m_CallsDirty: 1
 --- !u!1 &2026116015
 GameObject:
   m_ObjectHideFlags: 0
