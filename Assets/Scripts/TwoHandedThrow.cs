@@ -23,7 +23,7 @@ public class TwoHandedThrow : XRGrabInteractable
     protected override void Awake()
     {
         base.Awake();
-        tr.active = false;
+        tr.emitting = false;
         rb = GetComponent<Rigidbody>();
     }
 
