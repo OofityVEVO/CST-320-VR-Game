@@ -9,10 +9,11 @@ public class PuzzleOne : MonoBehaviour
 
     [Header("Door Settings")]
     public GameObject door;
-    public float openBot;
-    public float closeBot;
-    public float speed;
-    public bool opening;
+    public float openAngle = 90f; // Adjust to match your door's rotation
+    public float closeAngle = 0f;
+    public float speed = 2f; // Adjust speed for smoother opening
+    private bool isOpening = false;
+    public float duration = 2f; 
 
     void Start()
     {
@@ -32,20 +33,34 @@ public class PuzzleOne : MonoBehaviour
 
     void PuzzleSolve()
     {
-        Debug.Log("Mochi Escaped!! :DD");
-
-        Vector3 currentBot = door.transform.localEulerAngles;
-
-        while (currentBot.y < openBot)
+        if (!isOpening)
         {
-            door.transform.localEulerAngles = Vector3.Lerp(currentBot, new Vector3(currentBot.x, openBot, currentBot.z), speed * Time.deltaTime);
+            StartCoroutine(OpenDoor());
         }
     }
 
-    void OpenDoor()
+    IEnumerator OpenDoor()
     {
+        isOpening = true;  // Prevent multiple calls
+        float elapsedTime = 0f;
+        float duration = 2f; // Adjust duration for smoother transition
 
+        Quaternion startRotation = door.transform.localRotation;
+        Quaternion endRotation = Quaternion.Euler(door.transform.localEulerAngles.x, openAngle, door.transform.localEulerAngles.z);
 
+        while (elapsedTime < duration)
+        {
+            float t = elapsedTime / duration;
+            t = Mathf.Clamp01(t);  // Ensure t is within 0 and 1
+
+            door.transform.localRotation = Quaternion.Slerp(startRotation, endRotation, t);
+            elapsedTime += Time.deltaTime * speed;
+            yield return null;
+        }
+
+        door.transform.localRotation = endRotation;
+        isOpening = false;  // Allow re-triggering
+        Debug.Log("Door has been opened");
     }
 
 }
