@@ -53798,7 +53798,7 @@ MonoBehaviour:
     m_Bits: 4294967295
   m_InteractionLayers:
     m_Bits: 1
-  m_DistanceCalculationMode: 1
+  m_DistanceCalculationMode: 0
   m_SelectMode: 0
   m_FocusMode: 1
   m_CustomReticle: {fileID: 0}
@@ -53881,7 +53881,7 @@ MonoBehaviour:
   m_OnDeactivate:
     m_PersistentCalls:
       m_Calls: []
-  m_AttachTransform: {fileID: 1819311967}
+  m_AttachTransform: {fileID: 2106833004}
   m_SecondaryAttachTransform: {fileID: 0}
   m_UseDynamicAttach: 0
   m_MatchAttachPosition: 1
@@ -53970,7 +53970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 851db3804dcafe54abaca7ea4bc99d8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxRadius: 2
+  maxRadius: 5
 --- !u!114 &1724624716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53984,7 +53984,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anchorPoint: {fileID: 682707430}
-  maxPullDistance: 3
+  maxPullDistance: 5
 --- !u!114 &1724624717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -53997,8 +53997,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baf9d73be178e894785fe36d8b91a542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitsToDestroy: 5
-  forceThreshold: 10
+  hitsToDestroy: 25
+  forceThreshold: 15
 --- !u!145 &1724624718
 SpringJoint:
   m_ObjectHideFlags: 0
