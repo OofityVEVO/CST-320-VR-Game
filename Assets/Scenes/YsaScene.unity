@@ -13275,6 +13275,7 @@ MonoBehaviour:
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
   Throwforce: 1000
+  tr: {fileID: 0}
   holdOffset: {fileID: 536726592}
 --- !u!136 &371425640
 CapsuleCollider:
