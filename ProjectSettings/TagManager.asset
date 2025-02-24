@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Wall
   - Chitterkin
+  - Interactable
   layers:
   - Default
   - TransparentFX

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[RequireComponent(typeof(AudioSource))]
+
 public class SmashCage : MonoBehaviour
 {
     #region Variables
@@ -17,36 +19,41 @@ public class SmashCage : MonoBehaviour
     public UnityEvent event1;
     public GameObject realMochi;
 
+    AudioSource audioSource;
+    public AudioClip hitSound;
+
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         event1 = new UnityEvent();
 
         event1.AddListener(WakeGameObject);
         realMochi.SetActive(false); 
     }
 
-    // ### Unity Functions ###
-    void Update()
-    {
-        if (hitsToDestroy <= 0)
-        {
-            event1.Invoke();
-            event1.RemoveListener(WakeGameObject);
-            Destroy(gameObject);
-        }
-            
-
-    }
-
 
     // ### Component Functions ###
     private void OnCollisionEnter(Collision collision)
     {
-        float impactForce = collision.relativeVelocity.magnitude;
-
-        if (impactForce > forceThreshold)
+        // add pitch later
+        if(collision.gameObject.CompareTag("Wall"))
         {
-            hitsToDestroy--;
+            float impactForce = collision.relativeVelocity.magnitude;
+            audioSource.pitch = UnityEngine.Random.Range(1f, 1.5f);
+            audioSource.PlayOneShot(hitSound);
+
+            if (impactForce > forceThreshold)
+            {
+                hitsToDestroy--;
+            }
+
+            if (hitsToDestroy <= 0)
+            {
+                event1.Invoke();
+                event1.RemoveListener(WakeGameObject);
+                Destroy(gameObject);
+            }
         }
     }
 
