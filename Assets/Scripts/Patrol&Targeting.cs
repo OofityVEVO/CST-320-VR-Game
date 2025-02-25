@@ -1,0 +1,183 @@
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEngine;
+using UnityEngine.AI;
+
+public class PatrolTargeting : MonoBehaviour
+{
+    #region Variables and Components
+
+    public int maxPatience = 1000;
+    public int maxKnowLocation = 1000;
+    public int startingFlag = 0;
+    public bool randomTargeting = false;
+    public bool canIdle = false;
+    [SerializeField] Transform[] Flags;
+
+    int flagIndex = 0;
+    int patience = 0;
+    int knowLocation = 0;
+    bool playerInSight = false;
+    bool lookingForPlayer = false;
+    bool distracted = false;
+    Vector3 lastSeenPosition;
+    NavMeshAgent _navMeshAgent;
+    Transform player = null;
+
+    #endregion
+
+    // ### SCRIPT FUNCTIONS ###
+    private void ToPlayer()
+    {
+        if (playerInSight)
+        {
+            _navMeshAgent.SetDestination(player.position);
+        }
+        else if (!playerInSight && knowLocation > 0)
+        {
+            _navMeshAgent.SetDestination(player.position);
+        }
+        else
+        {
+            _navMeshAgent.SetDestination(lastSeenPosition);
+        }
+    }
+
+    private void ToFlag()
+    {
+
+        if (HasReachedFlag() && !canIdle)
+        {
+            flagIndex = randomTargeting
+            ? Random.Range(0, Flags.Length)
+            : (flagIndex + 1) % Flags.Length;
+
+            _navMeshAgent.SetDestination(Flags[flagIndex].position);
+        }
+        else if (!HasReachedFlag())
+        {
+            _navMeshAgent.SetDestination(Flags[flagIndex].position);
+        }
+        else if (HasReachedFlag() || !distracted) // Can Idle Case
+        {
+            _navMeshAgent.SetDestination(Flags[flagIndex].position);
+        }
+    }
+
+    private void ToDistraction()
+    {
+        _navMeshAgent.SetDestination(lastSeenPosition);
+
+        if (HasReachedFlag())
+        {
+            distracted = false;
+        }
+    }
+
+    bool HasReachedFlag()
+    {
+        return !_navMeshAgent.pathPending && _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance;
+    }
+
+
+    // ### UNITY FUNCTIONS ####
+    void Start()
+    {
+        Random.InitState((int)System.DateTime.Now.Ticks);
+        _navMeshAgent = GetComponent<NavMeshAgent>();
+
+        flagIndex = startingFlag;
+        _navMeshAgent.SetDestination(Flags[flagIndex].position);
+    }
+
+    void Update()
+    {
+        // Patience Decay
+        if (!playerInSight && lookingForPlayer && patience > 0)
+        {
+            patience--;
+            knowLocation--;
+
+            if (patience <= 0 && !distracted)
+            {
+                lookingForPlayer = false;
+                player = null;
+                lastSeenPosition = Vector3.zero;
+                knowLocation = 0;
+
+                if (canIdle)
+                {
+                    ToFlag();
+                }
+            }
+        }
+
+        // Targeting Cases
+        if (!lookingForPlayer && !distracted)
+        {
+            ToFlag();
+        }
+        else if (!lookingForPlayer && distracted)
+        {
+            ToDistraction();
+        }
+        else if (playerInSight || lookingForPlayer)
+        {
+            ToPlayer();
+        }
+    }
+
+
+    // ### COMPONENT FUNCTIONS ###
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Distraction"))
+        {
+            Collider objectCollider = other.GetComponent<SphereCollider>();
+            if (objectCollider != null && objectCollider.bounds.Contains(transform.position))
+            {
+                lastSeenPosition = other.transform.position;
+                distracted = true;
+            }
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Vector3 directionToPlayer = (other.transform.position - transform.position).normalized;
+            float distanceToPlayer = Vector3.Distance(transform.position, other.transform.position);
+
+            Debug.DrawRay(transform.position, directionToPlayer * distanceToPlayer, Color.red);
+
+            int layerMask = ~LayerMask.GetMask("Enemies");
+            if (Physics.Raycast(transform.position, directionToPlayer, out RaycastHit hit, distanceToPlayer, layerMask))
+            {
+                if (hit.collider.CompareTag("Player"))
+                {
+                    player = other.transform;
+                    lastSeenPosition = other.transform.position;
+                    playerInSight = true;
+                    lookingForPlayer = true;
+                    distracted = false;
+                    patience = maxPatience;
+                    knowLocation = maxKnowLocation;
+                }
+                else
+                {
+                    playerInSight = false;
+                }
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            playerInSight = false;
+        }
+    }
+}
