@@ -1,5 +1,8 @@
 using System.Collections;
+using UnityEngine.XR.Interaction.Toolkit;
 using UnityEngine;
+
+public enum buttons {button1, button2};
 
 public class BigDoorPuzzle : MonoBehaviour
 {
@@ -12,15 +15,92 @@ public class BigDoorPuzzle : MonoBehaviour
     private bool isOpening = false;
     public float duration = 2f;
 
-    void OnTriggerEnter(Collider collide)
+    [Header("General Button Settings")]
+    public Transform player;
+    public float activationDistance = 2f;
+    public XRBaseInteractable interactable; // Assign the XR interactable component of the button
+
+    [Header("Button 1 Settings")]
+    public GameObject button1;
+    public GameObject activatedButton1;
+    public GameObject uiPrompt1;  
+    public bool button1_Pressed;
+    
+    [Header("Button 2 Settings")]
+    public GameObject button2;
+    public GameObject activatedButton2;
+    public GameObject uiPrompt2; 
+    public bool button2_Pressed;
+   
+    void Update()
     {
-        if (collide.gameObject.CompareTag("Player") && !isOpening)
+        float distance1 = Vector3.Distance(player.position, button1.transform.position);
+        float distance2 = Vector3.Distance(player.position, button2.transform.position);
+
+        OpenUIPrompt(distance1, distance2);
+
+        if (button1_Pressed && !button2_Pressed)
         {
-            isOpening = true;
             StartCoroutine(OpenDoorCoroutine());
+        }
+        
+    }
+
+    void OpenUIPrompt(float distance1, float distance2)
+    {
+        if (distance1 <= activationDistance)
+        {
+            uiPrompt1.SetActive(true); 
+            interactable.enabled = true; 
+        }
+        else
+        {
+            uiPrompt1.SetActive(false); 
+            interactable.enabled = false;
+        }
+
+        if (distance2 <= activationDistance)
+        {
+            uiPrompt2.SetActive(true);
+            interactable.enabled = true;
+        }
+        else
+        {
+            uiPrompt2.SetActive(false);
+            interactable.enabled = false;
         }
     }
 
+    public IEnumerator ButtonIsPressed(buttons button)
+    {
+        switch (button)
+        {
+            case buttons.button1:
+                button1.SetActive(false);
+                activatedButton1.SetActive(true);
+                button1_Pressed = true;
+                Debug.Log("The Left button is active!");
+                yield return new WaitForSeconds(1);
+                button1.SetActive(true);
+                activatedButton1.SetActive(false);
+                button1_Pressed = false;
+                Debug.Log("The Left button is unactive");
+                break;
+            case buttons.button2:
+                button2.SetActive(false);
+                activatedButton2.SetActive(true);
+                button2_Pressed = false;
+                Debug.Log("The Right button is active!");
+                yield return new WaitForSeconds(1);
+                button2.SetActive(true);
+                activatedButton2.SetActive(false);
+                button2_Pressed = false;
+                Debug.Log("The Right button is un   active!");
+                break;
+
+        }
+    }
+    
     IEnumerator OpenDoorCoroutine()
     {
         float elapsedTime = 0f;
