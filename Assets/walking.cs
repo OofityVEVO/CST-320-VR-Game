@@ -1,6 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 using UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Receiver.Primitives;
 
 public class walking : MonoBehaviour
@@ -10,18 +13,29 @@ public class walking : MonoBehaviour
     // Start is called before the first frame update
 
     public int speed = 2;
+    public bool isRunning = false;
+    public bool isPoint = false;
+    public bool isBoogie = false;
+    private float crossfadeTime = 0.1f;
+    private string currAnimation = "idle";
+
+
     void Start()
     {
         animator = GetComponent<Animator>();
         lastPosition = transform.position;
-        int speed = 2;
+        
+        
+        
+
     }
 
     // Update is called once per frame
     void Update()
     {
+       
         //tests to determine the animations of the guard
-        if (transform.position.z >= 0)
+        if (transform.position.z >= 10)
         {
            Vector3 movement = new Vector3(0, 0, 0);
         }
@@ -31,31 +45,103 @@ public class walking : MonoBehaviour
             transform.position += movement * Time.deltaTime;
         }
 
-        // Check if the guard is moving
-        if (transform.position != lastPosition)
+        
+        if (isPoint == true)
         {
+            changeAnimation("point");
+            isPoint = false;
             
-            animator.SetBool("IsMoving", true);
-            Debug.Log("swapped to walking");// Play walking animation
         }
-        else
+
+        if (isBoogie == true)
         {
-           
-            animator.SetBool("IsMoving", false);
-            animator.SetBool("IsRunning", false);
-            Debug.Log("swapped to idle");
+            changeAnimation("boogie");
+            isBoogie = false;
         }
 
-       if(Input.GetMouseButtonDown(0))
-        {
-            animator.SetBool("IsRunning", true);
-            Debug.Log("swapped to running");
-            speed *= 2;
-        }
-       
-
-
+        checkAnimation();
         // Update the last position
         lastPosition = transform.position;
     }
+
+    public void changeAnimation(string animation, float time = 0)
+    {
+        
+        if(time > 0)
+        {
+            StartCoroutine(Wait());
+        }
+
+        else
+        {
+            Validate();
+        }
+
+        IEnumerator Wait()
+        {
+            yield return new WaitForSeconds(time - crossfadeTime);
+            Validate();
+        }
+
+        void Validate()
+        {
+            if (currAnimation != animation)
+            {
+
+                if (currAnimation == "")
+                {
+                    checkAnimation();
+                }
+                else
+                {
+                    currAnimation = animation;
+                    animator.CrossFade(animation, crossfadeTime);
+                }
+            }
+        }
+
+       
+    }
+
+     void checkAnimation()
+    {
+        if (currAnimation == "point")
+        {
+            return;
+        }
+
+        if (currAnimation == "boogie")
+        {
+            return;
+        }
+        // Check if the guard is moving
+
+        if (isRunning == true)
+        {
+            changeAnimation("running");
+            Debug.Log("running");
+        }
+
+        else
+        {
+            if (transform.position != lastPosition)
+            {
+
+                changeAnimation("walking");
+
+
+            }
+
+            else
+            {
+                changeAnimation("idle");
+
+            }
+
+        }
+       
+    }
+
+   
 }
+
