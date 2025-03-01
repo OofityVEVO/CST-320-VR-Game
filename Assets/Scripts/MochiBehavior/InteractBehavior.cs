@@ -102,8 +102,6 @@ public class interactBehavior : MochiBehavior
 
             if (distance < interactAt)
             {
-                // Debug Log
-                // Nothing is supposed to happen here YET
             }
            
         }
