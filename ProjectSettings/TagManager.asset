@@ -8,6 +8,7 @@ TagManager:
   - Chitterkin
   - Interactable
   - Distraction
+  - Chitter_Interactable
   layers:
   - Default
   - TransparentFX

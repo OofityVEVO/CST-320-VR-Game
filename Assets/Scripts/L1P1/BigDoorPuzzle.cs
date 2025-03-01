@@ -18,7 +18,7 @@ public class BigDoorPuzzle : MonoBehaviour
     [Header("General Button Settings")]
     public Transform player;
     public float activationDistance = 2f;
-    public XRBaseInteractable interactable; // Assign the XR interactable component of the button
+    //public XRBaseInteractable interactable; // Assign the XR interactable component of the button
 
     [Header("Button 1 Settings")]
     public GameObject button1;
@@ -39,7 +39,7 @@ public class BigDoorPuzzle : MonoBehaviour
 
         OpenUIPrompt(distance1, distance2);
 
-        if (button1_Pressed && !button2_Pressed)
+        if (button1_Pressed && button2_Pressed)
         {
             StartCoroutine(OpenDoorCoroutine());
         }
@@ -51,25 +51,36 @@ public class BigDoorPuzzle : MonoBehaviour
         if (distance1 <= activationDistance)
         {
             uiPrompt1.SetActive(true); 
-            interactable.enabled = true; 
+            //interactable.enabled = true; 
         }
         else
         {
             uiPrompt1.SetActive(false); 
-            interactable.enabled = false;
+            //interactable.enabled = false;
         }
 
         if (distance2 <= activationDistance)
         {
             uiPrompt2.SetActive(true);
-            interactable.enabled = true;
+            //interactable.enabled = true;
         }
         else
         {
             uiPrompt2.SetActive(false);
-            interactable.enabled = false;
+            //interactable.enabled = false;
         }
     }
+
+    public void pressButton1()
+    {
+        ButtonIsPressed(buttons.button1);
+    }
+
+    public void pressButton2()
+    {
+        ButtonIsPressed(buttons.button2);
+    }
+
 
     public IEnumerator ButtonIsPressed(buttons button)
     {
