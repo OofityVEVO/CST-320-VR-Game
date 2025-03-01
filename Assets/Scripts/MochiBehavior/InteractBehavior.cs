@@ -102,7 +102,6 @@ public class interactBehavior : MochiBehavior
 
             if (distance < interactAt)
             {
-                Debug.Log("interacting");
             }
            
         }
