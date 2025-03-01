@@ -6,13 +6,13 @@ using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 using UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Receiver.Primitives;
 
-public class walking : MonoBehaviour
+public class soldierAnimation : MonoBehaviour
 {
     private Animator animator;
     private Vector3 lastPosition;
     // Start is called before the first frame update
 
-    public int speed = 2;
+   
     public bool isRunning = false;
     public bool isPoint = false;
     public bool isBoogie = false;
@@ -22,7 +22,10 @@ public class walking : MonoBehaviour
 
     void Start()
     {
+        //intializes animator
         animator = GetComponent<Animator>();
+
+        //sets current position to determine if the soldier is moving
         lastPosition = transform.position;
         
         
@@ -33,19 +36,7 @@ public class walking : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
-        //tests to determine the animations of the guard
-        if (transform.position.z >= 10)
-        {
-           Vector3 movement = new Vector3(0, 0, 0);
-        }
-        else
-        {
-            Vector3 movement = new Vector3(0, 0, speed);
-            transform.position += movement * Time.deltaTime;
-        }
-
-        
+        //runs point animation if point is true, then sets point to false
         if (isPoint == true)
         {
             changeAnimation("point");
@@ -53,21 +44,24 @@ public class walking : MonoBehaviour
             
         }
 
+        //runs boogie animation if boogie is true, then sets boogie to false
         if (isBoogie == true)
         {
             changeAnimation("boogie");
             isBoogie = false;
         }
+        
 
         checkAnimation();
+
         // Update the last position
         lastPosition = transform.position;
     }
-
+    //changes the animation from one to the other
     public void changeAnimation(string animation, float time = 0)
     {
-        
-        if(time > 0)
+        // checks if the time is greater than 0, if so it will wait for the time to pass before running the animation
+        if (time > 0)
         {
             StartCoroutine(Wait());
         }
@@ -83,15 +77,18 @@ public class walking : MonoBehaviour
             Validate();
         }
 
+       // double checks current animation then changes animation
         void Validate()
         {
             if (currAnimation != animation)
             {
-
+                //checks if current animation is null
                 if (currAnimation == "")
                 {
                     checkAnimation();
                 }
+
+                //changes animation with crossfade so that it transitions smoothly
                 else
                 {
                     currAnimation = animation;
@@ -103,7 +100,8 @@ public class walking : MonoBehaviour
        
     }
 
-     void checkAnimation()
+    //checks the animation to see what is currently playing, will run correct animation based on the current state of the soldier
+    void checkAnimation()
     {
         if (currAnimation == "point")
         {
@@ -124,6 +122,7 @@ public class walking : MonoBehaviour
 
         else
         {
+            // Check if the guard is moving
             if (transform.position != lastPosition)
             {
 
