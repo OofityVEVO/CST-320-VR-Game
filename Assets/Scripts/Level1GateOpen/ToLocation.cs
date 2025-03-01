@@ -9,6 +9,7 @@ public class ToLocation : MonoBehaviour
     [SerializeField] Transform[] Flags;
     [SerializeField] GameObject Player;
     public bool LookAtPlayer;
+    public bool AutoEnable = true;
 
     int flagIndex = 0;
     NavMeshAgent _navMeshAgent;
@@ -32,7 +33,10 @@ public class ToLocation : MonoBehaviour
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
 
-        gameObject.SetActive(false);
+        if (!AutoEnable)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     void Update()
