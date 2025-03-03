@@ -11,6 +11,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Level1Scene2.unity
     guid: 7887601b04fa88d4e8b3406be7b68c3e
+  - enabled: 1
+    path: Assets/Scenes/MainMenu.unity
+    guid: a0904cda5b8d080489145665b225f60e
+  - enabled: 1
+    path: Assets/Scenes/AF_Armory.unity
+    guid: 20d72ce9114440445bb8ee33f94fe429
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 500fcef300ebfa443b36fbadcf72bbd0, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: d87f76f0f88a6cd4aadbf3f221fefa07, type: 2}
