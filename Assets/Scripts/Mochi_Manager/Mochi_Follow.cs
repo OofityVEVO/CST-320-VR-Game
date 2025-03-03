@@ -37,6 +37,8 @@ public class Mochi_Follow : StateBase
         {
             if (col.CompareTag("Chitter_Interactable"))
             {
+                Debug.Log("Mochi found an interactable item!");
+                manager.ChangeInteractable(col.gameObject);
                 manager.SwitchState(manager.mochiInteract);
                 return; // Stop checking once we find one
             }

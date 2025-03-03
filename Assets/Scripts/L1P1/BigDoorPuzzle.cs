@@ -17,7 +17,7 @@ public class BigDoorPuzzle : MonoBehaviour
 
     [Header("General Button Settings")]
     public Transform player;
-    public float activationDistance = 2f;
+    public float activationDistance = 8f; // Activation distance must be bigger (at least 8 or smth)
     //public XRBaseInteractable interactable; // Assign the XR interactable component of the button
 
     [Header("Button 1 Settings")]
@@ -36,8 +36,9 @@ public class BigDoorPuzzle : MonoBehaviour
     {
         float distance1 = Vector3.Distance(player.position, button1.transform.position);
         float distance2 = Vector3.Distance(player.position, button2.transform.position);
-
+    
         OpenUIPrompt(distance1, distance2);
+
 
         if (button1_Pressed && button2_Pressed)
         {
@@ -50,24 +51,24 @@ public class BigDoorPuzzle : MonoBehaviour
     {
         if (distance1 <= activationDistance)
         {
-            uiPrompt1.SetActive(true); 
-            //interactable.enabled = true; 
+            uiPrompt1.SetActive(true);
+            //Debug.Log("UI Prompt 1 should be visible");
         }
         else
         {
-            uiPrompt1.SetActive(false); 
-            //interactable.enabled = false;
+            uiPrompt1.SetActive(false);
+            //Debug.Log("UI Prompt 1 hidden");
         }
 
         if (distance2 <= activationDistance)
         {
             uiPrompt2.SetActive(true);
-            //interactable.enabled = true;
+            //Debug.Log("UI Prompt 2 should be visible");
         }
         else
         {
             uiPrompt2.SetActive(false);
-            //interactable.enabled = false;
+            //Debug.Log("UI Prompt 2 hidden");
         }
     }
 
@@ -100,7 +101,7 @@ public class BigDoorPuzzle : MonoBehaviour
             case buttons.button2:
                 button2.SetActive(false);
                 activatedButton2.SetActive(true);
-                button2_Pressed = false;
+                button2_Pressed = true;
                 Debug.Log("The Right button is active!");
                 yield return new WaitForSeconds(1);
                 button2.SetActive(true);
