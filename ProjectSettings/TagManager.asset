@@ -9,6 +9,7 @@ TagManager:
   - Interactable
   - Distraction
   - Chitter_Interactable
+  - Guard
   layers:
   - Default
   - TransparentFX
