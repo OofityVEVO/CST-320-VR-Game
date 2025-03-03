@@ -5,12 +5,13 @@ using UnityEngine;
 public class PlayerGameOver : MonoBehaviour
 {
     [SerializeField] GameObject GameOverUI;
-    [SerializeField] GameObject[] Guards;
+    public GameObject[] UIToDisable;
+    public GameObject[] GuardsToDisable;
 
     PlayerMovement ScriptMovement;
     Camera Cam;
 
-    public bool isGameOver = false;
+    bool isGameOver = false;
 
     // Start is called before the first frame update
     void Start()
@@ -37,12 +38,17 @@ public class PlayerGameOver : MonoBehaviour
         GameOverUI.SetActive(true);
         Cam.clearFlags = CameraClearFlags.SolidColor;
         Cam.backgroundColor = Color.black;
-        Cam.farClipPlane = 2f;
+        Cam.cullingMask = 1 << LayerMask.NameToLayer("UI");
         ScriptMovement.enabled = false;
 
-        foreach (GameObject guard in Guards)
+        foreach (GameObject guard in GuardsToDisable)
         {
             guard.SetActive(false);
+        }
+
+        foreach (GameObject UI in UIToDisable)
+        {
+            UI.SetActive(false);
         }
     }
 
