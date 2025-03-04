@@ -16,8 +16,10 @@ public class soldierAnimation : MonoBehaviour
     public bool isRunning = false;
     public bool isPoint = false;
     public bool isBoogie = false;
+    public bool isSleep = false;
     private float crossfadeTime = 0.1f;
     private string currAnimation = "idle";
+ 
 
 
     void Start()
@@ -49,6 +51,11 @@ public class soldierAnimation : MonoBehaviour
         {
             changeAnimation("boogie");
             isBoogie = false;
+        }
+
+        if (isSleep == true)
+        {
+            changeAnimation("sleep");
         }
         
 
@@ -101,7 +108,7 @@ public class soldierAnimation : MonoBehaviour
     }
 
     //checks the animation to see what is currently playing, will run correct animation based on the current state of the soldier
-    void checkAnimation()
+    public void checkAnimation()
     {
         if (currAnimation == "point")
         {
@@ -109,6 +116,11 @@ public class soldierAnimation : MonoBehaviour
         }
 
         if (currAnimation == "boogie")
+        {
+            return;
+        }
+
+        if (currAnimation == "sleep")
         {
             return;
         }
@@ -140,6 +152,8 @@ public class soldierAnimation : MonoBehaviour
         }
        
     }
+
+    
 
    
 }

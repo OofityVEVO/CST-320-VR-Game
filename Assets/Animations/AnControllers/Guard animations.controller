@@ -20,7 +20,7 @@ AnimatorStateMachine:
     m_Position: {x: 670, y: 190, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 7314506249895681574}
-    m_Position: {x: 180, y: 370, z: 0}
+    m_Position: {x: 460, y: 310, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5530752359076764504}
     m_Position: {x: 180, y: 290, z: 0}
@@ -130,7 +130,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Sleep
+  m_Name: sleep
   m_Speed: 1
   m_CycleOffset: 0
   m_Transitions: []

@@ -5,13 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class ChangeScenes : MonoBehaviour
 {
-    
-    void OnTriggerEnter(Collider collide)
+    public string sceneName = "AF_Armory";
+    void OnCollisionEnter()
     {
-        if (collide.gameObject.CompareTag("Player"))
-        {
-            SceneManager.LoadScene(1);
-        }
+        
+        
+        SceneManager.LoadScene("AF_Armory");
+        Debug.Log("Collision");
+
 
     }
 
