@@ -37,6 +37,10 @@ public class ToLocation : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+        else
+        {
+            ToFlag();
+        }
     }
 
     void Update()
