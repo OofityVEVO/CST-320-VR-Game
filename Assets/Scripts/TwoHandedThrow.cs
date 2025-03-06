@@ -19,11 +19,12 @@ public class TwoHandedThrow : XRGrabInteractable
 
     [SerializeField] private Transform holdOffset;
 
-
     protected override void Awake()
     {
         base.Awake();
-        tr.emitting = false;
+        if (tr != null)
+            tr.emitting = false;
+
         rb = GetComponent<Rigidbody>();
     }
 
@@ -48,12 +49,8 @@ public class TwoHandedThrow : XRGrabInteractable
             rb.isKinematic = true;
         }
 
-        //ApplyOffset();
-
-
         base.OnSelectEntered(args);
     }
-
 
     protected override void OnSelectExited(SelectExitEventArgs args)
     {
@@ -77,21 +74,6 @@ public class TwoHandedThrow : XRGrabInteractable
 
         base.OnSelectExited(args);
     }
-
-    /*private void ApplyOffset()
-    {
-        if (holdOffset != null)
-        {
-            transform.position = holdOffset.position;
-            transform.rotation = holdOffset.rotation;
-        }
-        else
-        {
-            // Default offset if none is set
-            transform.position += transform.forward * 0.3f;
-        }
-    }*/
-
 
     private void FixedUpdate()
     {
@@ -121,7 +103,7 @@ public class TwoHandedThrow : XRGrabInteractable
         throwVelocity += throwVelocity.normalized * handSpeedDifference * 1f; // Extra power from hand movement
 
         // Increase the velocity multiplier
-        rb.velocity = throwVelocity * 1.5f * Throwforce;  // Increased from 1.2 to 1.5
+        rb.velocity = throwVelocity * 1.5f * Throwforce;
 
         // Improve spin calculation for a more dynamic throw
         Vector3 spin = Vector3.Cross(leftHandVelocity, rightHandVelocity) * 0.7f; // Slightly more spin
@@ -136,6 +118,4 @@ public class TwoHandedThrow : XRGrabInteractable
         selectEntered.RemoveAllListeners();
         selectExited.RemoveAllListeners();
     }
-
-
 }
