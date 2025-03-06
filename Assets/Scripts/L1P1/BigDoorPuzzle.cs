@@ -80,7 +80,7 @@ public class BigDoorPuzzle : MonoBehaviour
 
     public void pressButton2()
     {
-        ButtonIsPressed(buttons.button2);
+        StartCoroutine(ButtonIsPressed(buttons.button2));
     }
 
 

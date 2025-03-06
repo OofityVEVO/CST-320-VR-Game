@@ -9,18 +9,15 @@ public class Mochi_Follow : StateBase
     public override void StartState(MochiManager manager)
     {
         canCheckForInteractables = false; // Prevent checking immediately
-        //manager.StartCoroutine(EnableInteractableCheckAfterDelay(manager, 1f)); // Start coroutine
+        manager.StartCoroutine(EnableInteractableCheckAfterDelay(manager, 1f)); // Start coroutine
     }
 
     public override void UpdateState(MochiManager manager)
     {
-        /*
         if (canCheckForInteractables)
         {
             CheckForInteractables(manager);
         }
-        */
-        SetDestination(manager);
         CheckForInteractables(manager);
     }
 

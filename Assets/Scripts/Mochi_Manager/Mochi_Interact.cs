@@ -33,10 +33,10 @@ public class Mochi_Interact : StateBase
         if(manager.currDistanceToPlayer >= manager.distanceToPlayer )
         {
             Debug.Log("Mochi is too far from the player");
-            return true;
+            return false;
         }
 
-        return false;
+        return true;
     }
 
     private IEnumerator GoToInteractable(MochiManager manager)
