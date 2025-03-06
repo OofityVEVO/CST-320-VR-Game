@@ -9,6 +9,9 @@ using UnityEngine.Playables;
 public class PatrolTargeting : MonoBehaviour
 {
     #region Variables and Components
+    [SerializeField] GameObject AnimationManager;
+    soldierAnimation animationScript;
+
     public int maxPatience = 1000;
     public int maxKnowLocation = 1000;
     public int startingFlag = 0;
@@ -73,6 +76,7 @@ public class PatrolTargeting : MonoBehaviour
 
         if (HasReachedFlag())
         {
+            animationScript.isRunning = false;
             distracted = false;
         }
     }
@@ -91,6 +95,8 @@ public class PatrolTargeting : MonoBehaviour
 
         flagIndex = startingFlag;
         _navMeshAgent.SetDestination(Flags[flagIndex].position);
+
+        animationScript = GetComponentInParent<soldierAnimation>();
     }
 
     void Update()
@@ -112,22 +118,30 @@ public class PatrolTargeting : MonoBehaviour
 
                     if (canIdle)
                     {
+                        animationScript.isRunning = true;
                         ToFlag();
                     }
                 }
             }
 
             // Targeting Cases
-            if (!lookingForPlayer && !distracted)
+            if(HasReachedFlag())
             {
+                animationScript.isRunning = false;
+            }
+            else if (!lookingForPlayer && !distracted)
+            {
+                animationScript.isRunning = true;
                 ToFlag();
             }
             else if (!lookingForPlayer && distracted)
             {
+                animationScript.isRunning = true;
                 ToDistraction();
             }
             else if (playerInSight || lookingForPlayer)
             {
+                animationScript.isRunning = true;
                 ToPlayer();
             }
         }
@@ -198,5 +212,8 @@ public class PatrolTargeting : MonoBehaviour
     {
         isActive = false;
         _navMeshAgent.isStopped = true;
+
+        animationScript.isRunning = false;
+        animationScript.isSleep = true;
     }
 }
