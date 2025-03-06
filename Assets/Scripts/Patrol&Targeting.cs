@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Animations;
+using UnityEngine.Playables;
 
 public class PatrolTargeting : MonoBehaviour
 {
     #region Variables and Components
-
     public int maxPatience = 1000;
     public int maxKnowLocation = 1000;
     public int startingFlag = 0;
@@ -21,6 +22,7 @@ public class PatrolTargeting : MonoBehaviour
     bool playerInSight = false;
     bool lookingForPlayer = false;
     bool distracted = false;
+    public bool isActive = true;
     Vector3 lastSeenPosition;
     NavMeshAgent _navMeshAgent;
     Transform player = null;
@@ -93,38 +95,41 @@ public class PatrolTargeting : MonoBehaviour
 
     void Update()
     {
-        // Patience Decay
-        if (!playerInSight && lookingForPlayer && patience > 0)
+        if (isActive)
         {
-            patience--;
-            knowLocation--;
-
-            if (patience <= 0 && !distracted)
+            // Patience Decay
+            if (!playerInSight && lookingForPlayer && patience > 0)
             {
-                lookingForPlayer = false;
-                player = null;
-                lastSeenPosition = Vector3.zero;
-                knowLocation = 0;
+                patience--;
+                knowLocation--;
 
-                if (canIdle)
+                if (patience <= 0 && !distracted)
                 {
-                    ToFlag();
+                    lookingForPlayer = false;
+                    player = null;
+                    lastSeenPosition = Vector3.zero;
+                    knowLocation = 0;
+
+                    if (canIdle)
+                    {
+                        ToFlag();
+                    }
                 }
             }
-        }
 
-        // Targeting Cases
-        if (!lookingForPlayer && !distracted)
-        {
-            ToFlag();
-        }
-        else if (!lookingForPlayer && distracted)
-        {
-            ToDistraction();
-        }
-        else if (playerInSight || lookingForPlayer)
-        {
-            ToPlayer();
+            // Targeting Cases
+            if (!lookingForPlayer && !distracted)
+            {
+                ToFlag();
+            }
+            else if (!lookingForPlayer && distracted)
+            {
+                ToDistraction();
+            }
+            else if (playerInSight || lookingForPlayer)
+            {
+                ToPlayer();
+            }
         }
     }
 
@@ -139,6 +144,14 @@ public class PatrolTargeting : MonoBehaviour
             {
                 lastSeenPosition = other.transform.position;
                 distracted = true;
+            }
+        }
+        else if(other.CompareTag("SleepPotion"))
+        {
+            Collider objectCollider = other.GetComponent<SphereCollider>();
+            if (objectCollider != null && objectCollider.bounds.Contains(transform.position))
+            {
+                FallAsleep();
             }
         }
     }
@@ -179,5 +192,11 @@ public class PatrolTargeting : MonoBehaviour
         {
             playerInSight = false;
         }
+    }
+
+    void FallAsleep()
+    {
+        isActive = false;
+        _navMeshAgent.isStopped = true;
     }
 }
