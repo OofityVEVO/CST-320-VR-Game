@@ -10,6 +10,7 @@ TagManager:
   - Distraction
   - Chitter_Interactable
   - Guard
+  - SleepPotion
   layers:
   - Default
   - TransparentFX
