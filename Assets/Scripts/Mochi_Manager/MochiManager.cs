@@ -20,22 +20,22 @@ public class MochiManager : MonoBehaviour
 
     [Header("Mochi Information")]
     public UnityEngine.AI.NavMeshAgent _navMeshAgent;
+    public Transform _playerDestination;
     public Rigidbody rb;
 
     [Header("Interact Behavior Information")]
-    public List<Transform> interactables = new List<Transform>();
-    public int interactDistance = 2; //distance from the object it will stand at
-    public int interactAt = 2; //distance from the object it will interact at
-    public int range = 10; //range in which the object will be detectable
+    public float interactDistance = 2.5f; //distance from the object it will stand at
     public GameObject interactable;
     public MochiInteractBase interactScript;
     public float objectDistance = 10f;
+    public float distanceToInteractable; // the distance between Mochi and the interactableObject
+    public float currDistanceToPlayer; //distance from the object it will interact at
+    public float distanceToPlayer = 10f; //distance from the object it will interact at
     public XRController controller; // Controls which trigger the player needs to press to get Mochi to interact
 
     [Header("Follow Behavior Information")]
-    public Transform _playerDestination;
     public float socialDistance = 0.5f; // distance from the object it will stand at to prevent mochi getting to close
-    public float detectionRadius = 10f; // how far Mochi will want to check
+    public float detectionRadius = 10f; // how far Mochi will want to check for an interactable
     public LayerMask interactableLayer;
 
     [Header("Standby Behavior Information")]
@@ -58,6 +58,7 @@ public class MochiManager : MonoBehaviour
     public void Update()
     {
         currState.UpdateState(this);
+        Debug.Log("Current State: " + currState.GetType().Name);
     }
 
     public void SwitchState(StateBase newState)
@@ -70,6 +71,15 @@ public class MochiManager : MonoBehaviour
     {
         interactable = newInteractable;
         interactScript = interactable.GetComponent<MochiInteractBase>();
+    }
+
+    public void ResetAgent()
+    {
+        _navMeshAgent.ResetPath(); // Clears the current path
+        _navMeshAgent.isStopped = true; // Stops movement
+        _navMeshAgent.velocity = Vector3.zero; // Resets velocity
+        _navMeshAgent.enabled = false; // Disables and reenables to fully reset
+        _navMeshAgent.enabled = true;
     }
 
 }

@@ -12,7 +12,7 @@ public class BigDoorPuzzle : MonoBehaviour
     public float openAngle = 90f; // Adjust to match your door's rotation
     public float closeAngle = 0f;
     public float speed = 2f; // Adjust speed for smoother opening
-    private bool isOpening = false;
+    //private bool isOpening = false;
     public float duration = 2f;
 
     [Header("General Button Settings")]
@@ -74,7 +74,8 @@ public class BigDoorPuzzle : MonoBehaviour
 
     public void pressButton1()
     {
-        ButtonIsPressed(buttons.button1);
+        StartCoroutine(ButtonIsPressed(buttons.button1));
+        Debug.Log("Work");
     }
 
     public void pressButton2()
@@ -85,6 +86,7 @@ public class BigDoorPuzzle : MonoBehaviour
 
     public IEnumerator ButtonIsPressed(buttons button)
     {
+        Debug.Log("Button press: " + button);
         switch (button)
         {
             case buttons.button1:
@@ -130,7 +132,7 @@ public class BigDoorPuzzle : MonoBehaviour
         }
 
         rightDoor.transform.localRotation = endRotation;
-        isOpening = false;  // Allow re-triggering
+        //isOpening = false;  // Allow re-triggering
         Debug.Log("Door has been opened");
     }
 }

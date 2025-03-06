@@ -7,11 +7,17 @@ public class Mochi_Controller : MonoBehaviour
     public TwoHandedThrow throwable; // Throw behavior
 
     private XRGrabInteractable grabInteractable; // Reference to grab system
+    private InteractionLayerMask originalInteractionLayers; // Store original layers
 
     private void Start()
     {
         grabInteractable = GetComponent<XRGrabInteractable>();
         throwable = GetComponent<TwoHandedThrow>(); // Ensure reference is assigned
+
+        if (throwable != null)
+        {
+            originalInteractionLayers = throwable.interactionLayers; // Store original interaction layers
+        }
 
         if (grabInteractable != null)
         {
@@ -26,8 +32,6 @@ public class Mochi_Controller : MonoBehaviour
 
         EnableMochiManager();
     }
-
-
 
     private void OnDestroy()
     {
@@ -44,7 +48,6 @@ public class Mochi_Controller : MonoBehaviour
         EnableThrowable();
     }
 
-
     private void OnRelease(SelectExitEventArgs args)
     {
         EnableMochiManager();
@@ -60,7 +63,9 @@ public class Mochi_Controller : MonoBehaviour
         }
         if (throwable != null)
         {
-            throwable.enabled = false;
+            Debug.Log($"Before Disabling: {throwable.interactionLayers.value}");
+            throwable.enabled = true;
+            throwable.interactionLayers = 0; // Disables interactions
         }
     }
 
@@ -75,7 +80,11 @@ public class Mochi_Controller : MonoBehaviour
         if (throwable != null)
         {
             throwable.enabled = true;
+
+            // Restore original interaction layers
+            throwable.interactionLayers = originalInteractionLayers;
+
+            Debug.Log($"After Enabling: {throwable.interactionLayers.value}");
         }
     }
-
 }
