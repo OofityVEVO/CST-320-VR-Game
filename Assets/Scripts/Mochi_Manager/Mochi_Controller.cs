@@ -98,6 +98,7 @@ public class Mochi_Controller : MonoBehaviour
     private void EnableMochiManager()
     {
         Debug.Log("Enabling MochiManager");
+        StartCoroutine(DelayedTime());
         
     }
 
