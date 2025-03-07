@@ -71,16 +71,10 @@ public class BigDoorPuzzle : MonoBehaviour
         }
     }
 
-    public void pressButton1()
+    public void pressButton(buttons button)
     {
-        ButtonIsPressed(buttons.button1);
+        ButtonIsPressed(button);
     }
-
-    public void pressButton2()
-    {
-        ButtonIsPressed(buttons.button2);
-    }
-
 
     public IEnumerator ButtonIsPressed(buttons button)
     {
