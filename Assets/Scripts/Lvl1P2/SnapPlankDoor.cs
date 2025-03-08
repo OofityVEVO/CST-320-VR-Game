@@ -6,7 +6,9 @@ using UnityEngine;
 public class SnapPlankDoor : MonoBehaviour
 {
     public Transform snapTarget; 
-    public float snapThreshold = 0.2f; 
+    public float snapThreshold = 0.2f;
+    public float timer = 10f;
+    public bool isSnapped = false;
 
 
     public GameObject lockPlank;
@@ -20,6 +22,29 @@ public class SnapPlankDoor : MonoBehaviour
         lockPlank.SetActive(false);
     }
 
+    void Update()
+    {
+
+        if (!isSnapped) { 
+            if (timer <= 0)
+            {
+                Debug.Log("Time is up");
+            }
+
+            else
+            {
+                timer -= Time.deltaTime;
+               
+            }
+        }
+
+        else
+        {
+            Debug.Log("Plank is snapped");
+        }
+    }
+
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.name == "Plank") 
@@ -27,11 +52,15 @@ public class SnapPlankDoor : MonoBehaviour
             lockPlank.SetActive(true);
             Destroy(other.gameObject);
             source.PlayOneShot(placePlank);
-            
+            isSnapped = true;
+            Debug.Log("Plank is snapped");
 
-            
+
+
         }
     }
+
+   
 
 
 }

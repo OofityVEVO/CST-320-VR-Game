@@ -30,6 +30,13 @@ public class BalconyAnimation : MonoBehaviour
         {
             transform.Translate(Vector3.forward * runSpeed * Time.deltaTime);
         }
+
+        if(transform.position.z >= 44)
+        {
+            Object.Destroy(this.gameObject);
+            Debug.Log(transform.position.z);
+            
+        }
     }
 
     IEnumerator GuardSequence()
@@ -38,17 +45,17 @@ public class BalconyAnimation : MonoBehaviour
         if (willPoint)
         {
 
-            Debug.Log("Guard is pointing");
+            
             soldierAnimation.isPoint = true; // Assuming this triggers the animation
                                              // Or use animator.SetTrigger("Point") if you're using a trigger parameter
         }
         // Step 2: Wait for the pointing animation to finish
-        float animationLength = 2f; // Replace with actual animation length or use Animator state check
+        float animationLength = 2.5f; 
         yield return new WaitForSecondsRealtime(animationLength);
 
 
         // Step 3: Rotate toward the designated direction
-        Debug.Log("Guard is rotating");
+        
 
         // Flatten the rotation direction to only consider horizontal (X and Z) components
         Vector3 horizontalDirection = new Vector3(rotationDirection.x, 0, rotationDirection.z).normalized;
@@ -66,7 +73,7 @@ public class BalconyAnimation : MonoBehaviour
         // Ensure final rotation is exact
         transform.rotation = targetRotation;
         // Step 4: Start running
-        Debug.Log("Guard is running");
+        
         soldierAnimation.isRunning = true; // Enable running in Update()
     }
 }

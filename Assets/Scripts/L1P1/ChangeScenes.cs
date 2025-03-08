@@ -6,10 +6,10 @@ using UnityEngine.SceneManagement;
 public class ChangeScenes : MonoBehaviour
 {
     public string sceneName = "AF_Armory";
-    void OnCollisionEnter()
+    void OnCollisionEnter(Collision collision)
     {
-        
-        
+        // If the player collides with the object, load the scene
+        if (collision.gameObject.tag == "Player")
         SceneManager.LoadScene("AF_Armory");
         Debug.Log("Collision");
 
