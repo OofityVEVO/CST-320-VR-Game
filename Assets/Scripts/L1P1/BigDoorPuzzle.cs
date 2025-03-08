@@ -12,12 +12,12 @@ public class BigDoorPuzzle : MonoBehaviour
     public float openAngle = 90f; // Adjust to match your door's rotation
     public float closeAngle = 0f;
     public float speed = 2f; // Adjust speed for smoother opening
-    private bool isOpening = false;
+    //private bool isOpening = false;
     public float duration = 2f;
 
     [Header("General Button Settings")]
     public Transform player;
-    public float activationDistance = 2f;
+    public float activationDistance = 8f; // Activation distance must be bigger (at least 8 or smth)
     //public XRBaseInteractable interactable; // Assign the XR interactable component of the button
 
     [Header("Button 1 Settings")]
@@ -36,8 +36,9 @@ public class BigDoorPuzzle : MonoBehaviour
     {
         float distance1 = Vector3.Distance(player.position, button1.transform.position);
         float distance2 = Vector3.Distance(player.position, button2.transform.position);
-
+    
         OpenUIPrompt(distance1, distance2);
+
 
         if (button1_Pressed && button2_Pressed)
         {
@@ -50,40 +51,41 @@ public class BigDoorPuzzle : MonoBehaviour
     {
         if (distance1 <= activationDistance)
         {
-            uiPrompt1.SetActive(true); 
-            //interactable.enabled = true; 
+            uiPrompt1.SetActive(true);
+            //Debug.Log("UI Prompt 1 should be visible");
         }
         else
         {
-            uiPrompt1.SetActive(false); 
-            //interactable.enabled = false;
+            uiPrompt1.SetActive(false);
+            //Debug.Log("UI Prompt 1 hidden");
         }
 
         if (distance2 <= activationDistance)
         {
             uiPrompt2.SetActive(true);
-            //interactable.enabled = true;
+            //Debug.Log("UI Prompt 2 should be visible");
         }
         else
         {
             uiPrompt2.SetActive(false);
-            //interactable.enabled = false;
+            //Debug.Log("UI Prompt 2 hidden");
         }
     }
 
     public void pressButton1()
     {
-        ButtonIsPressed(buttons.button1);
+        StartCoroutine(ButtonIsPressed(buttons.button1));
+        Debug.Log("Work");
     }
 
     public void pressButton2()
     {
-        ButtonIsPressed(buttons.button2);
+        StartCoroutine(ButtonIsPressed(buttons.button2));
     }
-
 
     public IEnumerator ButtonIsPressed(buttons button)
     {
+        Debug.Log("Button press: " + button);
         switch (button)
         {
             case buttons.button1:
@@ -100,7 +102,7 @@ public class BigDoorPuzzle : MonoBehaviour
             case buttons.button2:
                 button2.SetActive(false);
                 activatedButton2.SetActive(true);
-                button2_Pressed = false;
+                button2_Pressed = true;
                 Debug.Log("The Right button is active!");
                 yield return new WaitForSeconds(1);
                 button2.SetActive(true);
@@ -129,7 +131,7 @@ public class BigDoorPuzzle : MonoBehaviour
         }
 
         rightDoor.transform.localRotation = endRotation;
-        isOpening = false;  // Allow re-triggering
+        //isOpening = false;  // Allow re-triggering
         Debug.Log("Door has been opened");
     }
 }
