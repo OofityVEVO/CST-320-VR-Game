@@ -83,7 +83,6 @@ public class BigDoorPuzzle : MonoBehaviour
         StartCoroutine(ButtonIsPressed(buttons.button2));
     }
 
-
     public IEnumerator ButtonIsPressed(buttons button)
     {
         Debug.Log("Button press: " + button);

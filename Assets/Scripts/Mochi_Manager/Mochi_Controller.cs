@@ -1,33 +1,37 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
 public class Mochi_Controller : MonoBehaviour
 {
     public MochiManager mochiManager; // AI behavior
-    public TwoHandedThrow throwable; // Throw behavior
-
-    private XRGrabInteractable grabInteractable; // Reference to grab system
-    private InteractionLayerMask originalInteractionLayers; // Store original layers
+    public TwoHandedThrow throwable;  // Throw behavior
+    private XRGrabInteractable grabInteractable; // Single grab system
+    public float timeSpentInThrowable = 3f;
+    private int handCount = 0; // Manual tracking of hands
+    
 
     private void Start()
     {
+        // Get components
         grabInteractable = GetComponent<XRGrabInteractable>();
-        throwable = GetComponent<TwoHandedThrow>(); // Ensure reference is assigned
-
-        if (throwable != null)
-        {
-            originalInteractionLayers = throwable.interactionLayers; // Store original interaction layers
-        }
+        throwable = GetComponent<TwoHandedThrow>();
 
         if (grabInteractable != null)
         {
             Debug.Log("grabInteractable FOUND!");
-            grabInteractable.selectEntered.AddListener(OnGrab);
-            grabInteractable.selectExited.AddListener(OnRelease);
+            grabInteractable.selectEntered.AddListener(OnSelectEntered);
+            grabInteractable.selectExited.AddListener(OnSelectExited);
         }
         else
         {
             Debug.LogError("grabInteractable is NULL! Make sure the XRGrabInteractable component is attached.");
+        }
+
+        if (throwable == null)
+        {
+            Debug.LogError("TwoHandedThrow component is missing!");
         }
 
         EnableMochiManager();
@@ -37,54 +41,78 @@ public class Mochi_Controller : MonoBehaviour
     {
         if (grabInteractable != null)
         {
-            grabInteractable.selectEntered.RemoveListener(OnGrab);
-            grabInteractable.selectExited.RemoveListener(OnRelease);
+            grabInteractable.selectEntered.RemoveListener(OnSelectEntered);
+            grabInteractable.selectExited.RemoveListener(OnSelectExited);
         }
     }
 
-    private void OnGrab(SelectEnterEventArgs args)
+    private void OnSelectEntered(SelectEnterEventArgs args)
     {
-        Debug.Log("OnGrab triggered! Switching to Throwable Mode.");
-        EnableThrowable();
-    }
-
-    private void OnRelease(SelectExitEventArgs args)
-    {
-        EnableMochiManager();
-    }
-
-    private void EnableMochiManager()
-    {
-        Debug.Log("Enabling MochiManager, Disabling Throwable");
-
-        if (mochiManager != null)
-        {
-            mochiManager.enabled = true;
-        }
-        if (throwable != null)
-        {
-            Debug.Log($"Before Disabling: {throwable.interactionLayers.value}");
-            throwable.enabled = true;
-            throwable.interactionLayers = 0; // Disables interactions
-        }
-    }
-
-    private void EnableThrowable()
-    {
-        Debug.Log("Enabling Throwable, Disabling MochiManager");
+        Debug.Log("Object grabbed! Disabling AI.");
+        handCount++; // Increment hand count
 
         if (mochiManager != null)
         {
             mochiManager.enabled = false;
+            if (mochiManager._navMeshAgent != null)
+            {
+                mochiManager._navMeshAgent.enabled = false;
+            }
         }
+
+        // Check for two-handed grab and pass the interactor
+        if (throwable != null && handCount >= 2)
+        {
+            throwable.StartTrackingHands(grabInteractable, args.interactorObject as XRBaseInteractor);
+        }
+    }
+
+    private void OnSelectExited(SelectExitEventArgs args)
+    {
+        Debug.Log("Object released!");
+        handCount--; // Decrement hand count
+
         if (throwable != null)
         {
-            throwable.enabled = true;
+            if (handCount <= 0)
+            {
+                // No hands left, throw if it was two-handed
+                throwable.ThrowObject();
+                /*
+                if (throwable.WasTwoHanded())
+                {
+                    throwable.ThrowObject();
+                }
+                */
+                Invoke("EnableMochiManager", 0.2f); // Delay to allow throw physics
+                handCount = 0; // Reset to avoid negative
+            }
+            else
+            {
+                // One hand still grabbing, stop two-handed tracking if active
+                throwable.StopTrackingHands(grabInteractable);
+            }
+        }
+    }
 
-            // Restore original interaction layers
-            throwable.interactionLayers = originalInteractionLayers;
+    private void EnableMochiManager()
+    {
+        Debug.Log("Enabling MochiManager");
+        StartCoroutine(DelayedTime());
+        
+    }
 
-            Debug.Log($"After Enabling: {throwable.interactionLayers.value}");
+    IEnumerator DelayedTime()
+    {
+        yield return new WaitForSeconds(timeSpentInThrowable);
+
+        if (mochiManager != null)
+        {
+            mochiManager.enabled = true;
+            if (mochiManager._navMeshAgent != null)
+            {
+                mochiManager._navMeshAgent.enabled = true;
+            }
         }
     }
 }
