@@ -8,7 +8,7 @@ public class GameObjectEvent : UnityEvent<GameObject> { }
 
 public class PuzzleOne : MonoBehaviour
 {
-    public GameObjectEvent MochiEvent1;
+    public GameObjectEvent MochiEvent1; // Add this missing declaration
 
     [Header("Door Settings")]
     public GameObject door;
@@ -22,8 +22,14 @@ public class PuzzleOne : MonoBehaviour
     [Header("Animation Settings")]
     public Transform startPosition;
     public Transform climbEndPosition;
-    public float animationMovementSpeed = 2f; // Speed of the climbing animation
-    public float climbDuration = 2f; // Duration of climbing animation
+    public float animationMovementSpeed = 2f;
+    public float climbDuration = 2f;
+
+    private Rigidbody mochiRigidbody;
+    private Quaternion uprightRotation = Quaternion.Euler(0f, 0f, 0f);
+
+    public AudioSource source;
+    public AudioClip doorOpen;
 
     void Start()
     {
@@ -37,6 +43,7 @@ public class PuzzleOne : MonoBehaviour
     {
         if (collide.gameObject.CompareTag("Chitterkin"))
         {
+            mochiRigidbody = collide.gameObject.GetComponent<Rigidbody>();
             MochiEvent1.Invoke(collide.gameObject);
         }
     }
@@ -45,6 +52,11 @@ public class PuzzleOne : MonoBehaviour
     {
         if (!isOpening)
         {
+            if (mochiRigidbody != null)
+            {
+                mochiRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
+                mochiRigidbody.velocity = Vector3.zero;
+            }
             StartCoroutine(ClimbDownAndOpenDoor(Mochi));
         }
     }
@@ -55,18 +67,21 @@ public class PuzzleOne : MonoBehaviour
         isOpening = true;
         float elapsedTime = 0f;
 
-
         Mochi.transform.position = startPosition.position;
+        Mochi.transform.rotation = uprightRotation;
 
+        source.PlayOneShot(doorOpen);
         while (elapsedTime < climbDuration)
         {
-            float t = elapsedTime / climbDuration; // Normalized time (0 to 1)
+            float t = elapsedTime / climbDuration;
             Mochi.transform.position = Vector3.Lerp(startPosition.position, climbEndPosition.position, t);
+            Mochi.transform.rotation = uprightRotation;
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
         Mochi.transform.position = climbEndPosition.position;
+        Mochi.transform.rotation = uprightRotation;
 
         Debug.Log("Mochi has climbed down!");
 
@@ -87,14 +102,17 @@ public class PuzzleOne : MonoBehaviour
         {
             float t = elapsedTime / duration;
             door.transform.localRotation = Quaternion.Slerp(startRotation, endRotation, t);
-
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-        // Ensure door is fully opened
         door.transform.localRotation = endRotation;
         isOpening = false;
+
+        if (mochiRigidbody != null)
+        {
+            mochiRigidbody.constraints = RigidbodyConstraints.None;
+        }
 
         Debug.Log("Door has been opened!");
     }
