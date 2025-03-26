@@ -11,6 +11,8 @@ TagManager:
   - Chitter_Interactable
   - Guard
   - SleepPotion
+  - NoteClick
+  - NoteCleaner
   layers:
   - Default
   - TransparentFX
