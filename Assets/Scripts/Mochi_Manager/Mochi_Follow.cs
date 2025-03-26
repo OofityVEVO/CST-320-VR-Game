@@ -18,7 +18,7 @@ public class Mochi_Follow : StateBase
         {
             CheckForInteractables(manager);
         }
-        CheckForInteractables(manager);
+        SetDestination(manager);
     }
 
     private IEnumerator EnableInteractableCheckAfterDelay(MochiManager manager, float delay)

@@ -58,7 +58,7 @@ public class MochiManager : MonoBehaviour
     public void Update()
     {
         currState.UpdateState(this);
-        Debug.Log("Current State: " + currState.GetType().Name);
+        // Debug.Log("Current State: " + currState.GetType().Name);
     }
 
     public void SwitchState(StateBase newState)
