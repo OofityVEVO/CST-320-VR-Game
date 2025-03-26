@@ -35,6 +35,9 @@ public class PatrolTargeting : MonoBehaviour
     // ### SCRIPT FUNCTIONS ###
     private void ToPlayer()
     {
+        _navMeshAgent.speed = 4;
+        _navMeshAgent.acceleration = 4;
+
         if (playerInSight)
         {
             _navMeshAgent.SetDestination(player.position);
@@ -51,6 +54,8 @@ public class PatrolTargeting : MonoBehaviour
 
     private void ToFlag()
     {
+        _navMeshAgent.speed = 2;
+        _navMeshAgent.acceleration = 2;
 
         if (HasReachedFlag() && !canIdle)
         {
@@ -72,6 +77,9 @@ public class PatrolTargeting : MonoBehaviour
 
     private void ToDistraction()
     {
+        _navMeshAgent.speed = 4;
+        _navMeshAgent.acceleration = 4;
+
         _navMeshAgent.SetDestination(lastSeenPosition);
 
         if (HasReachedFlag())
@@ -119,19 +127,22 @@ public class PatrolTargeting : MonoBehaviour
                     if (canIdle)
                     {
                         animationScript.isRunning = true;
+                        animationScript.isWalking = false;
                         ToFlag();
                     }
                 }
             }
 
             // Targeting Cases
-            if(HasReachedFlag())
+            if(HasReachedFlag() && canIdle && !playerInSight)
             {
                 animationScript.isRunning = false;
+                animationScript.isWalking = false;
             }
             else if (!lookingForPlayer && !distracted)
             {
-                animationScript.isRunning = true;
+                animationScript.isRunning = false;
+                animationScript.isWalking = true;
                 ToFlag();
             }
             else if (!lookingForPlayer && distracted)
@@ -214,6 +225,7 @@ public class PatrolTargeting : MonoBehaviour
         _navMeshAgent.isStopped = true;
 
         animationScript.isRunning = false;
+        animationScript.isWalking = false;
         animationScript.isSleep = true;
     }
 }
