@@ -6364,6 +6364,7 @@ GameObject:
   - component: {fileID: 124454981}
   - component: {fileID: 124454980}
   - component: {fileID: 124454979}
+  - component: {fileID: 124454983}
   m_Layer: 0
   m_Name: DoorBackground
   m_TagString: Untagged
@@ -6457,6 +6458,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1609912856}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &124454983
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124454978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95b720e7306bdac4b9f6235e70530e54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneName: Level2Town
 --- !u!1001 &125254060
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6609,6 +6623,7 @@ MonoBehaviour:
   - {fileID: 817049593}
   Player: {fileID: 1993533761}
   LookAtPlayer: 1
+  AutoEnable: 1
 --- !u!4 &125254065 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: df305350d880fd44faacf4cc03721c0d, type: 3}
@@ -6932,6 +6947,7 @@ MonoBehaviour:
   - {fileID: 1116863133}
   Player: {fileID: 1993533761}
   LookAtPlayer: 1
+  AutoEnable: 1
 --- !u!4 &138089321 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: df305350d880fd44faacf4cc03721c0d, type: 3}
@@ -30830,6 +30846,7 @@ MonoBehaviour:
   - {fileID: 708621498}
   Player: {fileID: 1993533761}
   LookAtPlayer: 1
+  AutoEnable: 1
 --- !u!4 &497304520 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: df305350d880fd44faacf4cc03721c0d, type: 3}
@@ -44391,6 +44408,7 @@ MonoBehaviour:
   - {fileID: 1893849995}
   Player: {fileID: 1993533761}
   LookAtPlayer: 1
+  AutoEnable: 1
 --- !u!4 &833026122 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: df305350d880fd44faacf4cc03721c0d, type: 3}
@@ -50120,6 +50138,7 @@ MonoBehaviour:
   - {fileID: 1505243602}
   Player: {fileID: 1993533761}
   LookAtPlayer: 1
+  AutoEnable: 1
 --- !u!4 &936349653 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: df305350d880fd44faacf4cc03721c0d, type: 3}
@@ -52919,6 +52938,7 @@ MonoBehaviour:
   - {fileID: 1709374115}
   Player: {fileID: 1993533761}
   LookAtPlayer: 1
+  AutoEnable: 1
 --- !u!4 &1075709826 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: df305350d880fd44faacf4cc03721c0d, type: 3}
@@ -53758,7 +53778,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.083333336
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 0}
   m_BuildHeightMesh: 0
@@ -55971,6 +55991,7 @@ MonoBehaviour:
   - {fileID: 19171073}
   Player: {fileID: 1993533761}
   LookAtPlayer: 1
+  AutoEnable: 1
 --- !u!4 &1341606939 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: df305350d880fd44faacf4cc03721c0d, type: 3}
@@ -62908,6 +62929,7 @@ MonoBehaviour:
   - {fileID: 292510212}
   Player: {fileID: 1993533761}
   LookAtPlayer: 1
+  AutoEnable: 1
 --- !u!4 &1585277210 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: df305350d880fd44faacf4cc03721c0d, type: 3}
@@ -63311,7 +63333,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.16666667
+  m_VoxelSize: 0.083333336
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: fe124f078b23c56408a071aa66e9a297, type: 2}
   m_BuildHeightMesh: 0
