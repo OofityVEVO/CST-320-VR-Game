@@ -17,6 +17,7 @@ public class soldierAnimation : MonoBehaviour
     public bool isPoint = false;
     public bool isBoogie = false;
     public bool isSleep = false;
+    public bool isWalking = false;
     private float crossfadeTime = 0.1f;
     private string currAnimation = "idle";
  
@@ -29,10 +30,6 @@ public class soldierAnimation : MonoBehaviour
 
         //sets current position to determine if the soldier is moving
         lastPosition = transform.position;
-        
-        
-        
-
     }
 
     // Update is called once per frame
@@ -57,7 +54,6 @@ public class soldierAnimation : MonoBehaviour
         {
             changeAnimation("sleep");
         }
-        
 
         checkAnimation();
 
@@ -131,30 +127,10 @@ public class soldierAnimation : MonoBehaviour
             changeAnimation("running");
             Debug.Log("running");
         }
-
-        else
+        else if (isWalking == true)
         {
-            // Check if the guard is moving
-            if (transform.position != lastPosition)
-            {
-
-                changeAnimation("walking");
-
-
-            }
-
-            else
-            {
-                changeAnimation("idle");
-
-            }
-
+            changeAnimation("walking");
         }
-       
-    }
-
-    
-
-   
+    }   
 }
 

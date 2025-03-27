@@ -12,6 +12,8 @@ TagManager:
   - Guard
   - SleepPotion
   - Ground
+  - NoteClick
+  - NoteCleaner
   layers:
   - Default
   - TransparentFX
