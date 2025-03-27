@@ -10,7 +10,7 @@ public class Mochi_Controller : MonoBehaviour
     private XRGrabInteractable grabInteractable; // Single grab system
     public float timeSpentInThrowable = 3f;
     private int handCount = 0; // Manual tracking of hands
-    
+    private bool hasLanded = false; // To check if object hit the ground
 
     private void Start()
     {
@@ -34,7 +34,15 @@ public class Mochi_Controller : MonoBehaviour
             Debug.LogError("TwoHandedThrow component is missing!");
         }
 
-        EnableMochiManager();
+        // Don't enable MochiManager at start
+        if (mochiManager != null)
+        {
+            mochiManager.enabled = false;
+            if (mochiManager._navMeshAgent != null)
+            {
+                mochiManager._navMeshAgent.enabled = false;
+            }
+        }
     }
 
     private void OnDestroy()
@@ -50,6 +58,7 @@ public class Mochi_Controller : MonoBehaviour
     {
         Debug.Log("Object grabbed! Disabling AI.");
         handCount++; // Increment hand count
+        hasLanded = false; // Reset when picked up again
 
         if (mochiManager != null)
         {
@@ -60,7 +69,6 @@ public class Mochi_Controller : MonoBehaviour
             }
         }
 
-        // Check for two-handed grab and pass the interactor
         if (throwable != null && handCount >= 2)
         {
             throwable.StartTrackingHands(grabInteractable, args.interactorObject as XRBaseInteractor);
@@ -70,36 +78,30 @@ public class Mochi_Controller : MonoBehaviour
     private void OnSelectExited(SelectExitEventArgs args)
     {
         Debug.Log("Object released!");
-        handCount--; // Decrement hand count
+        handCount--;
 
         if (throwable != null)
         {
             if (handCount <= 0)
             {
-                // No hands left, throw if it was two-handed
                 throwable.ThrowObject();
-                /*
-                if (throwable.WasTwoHanded())
-                {
-                    throwable.ThrowObject();
-                }
-                */
-                Invoke("EnableMochiManager", 0.2f); // Delay to allow throw physics
-                handCount = 0; // Reset to avoid negative
+                handCount = 0;
             }
             else
             {
-                // One hand still grabbing, stop two-handed tracking if active
                 throwable.StopTrackingHands(grabInteractable);
             }
         }
     }
 
-    private void EnableMochiManager()
+    private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("Enabling MochiManager");
-        StartCoroutine(DelayedTime());
-        
+        if (!hasLanded && collision.gameObject.CompareTag("Ground"))
+        {
+            Debug.Log("Mochi hit the ground!");
+            hasLanded = true;
+            StartCoroutine(DelayedTime());
+        }
     }
 
     IEnumerator DelayedTime()
@@ -113,6 +115,57 @@ public class Mochi_Controller : MonoBehaviour
             {
                 mochiManager._navMeshAgent.enabled = true;
             }
+            Debug.Log("MochiManager enabled after delay!");
         }
     }
+
+    public void EnterCutsceneMode()
+    {
+        Debug.Log("Cutscene started — disabling behaviors.");
+
+        if (mochiManager != null)
+        {
+            mochiManager.enabled = false;
+            if (mochiManager._navMeshAgent != null)
+                mochiManager._navMeshAgent.enabled = false;
+        }
+
+        // Disable interaction and physics
+        if (throwable != null)
+            throwable.enabled = false;
+
+        if (grabInteractable != null)
+            grabInteractable.enabled = false;
+
+        // Optional: Freeze physics
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            rb.isKinematic = true;
+        }
+    }
+
+    public void ExitCutsceneMode()
+    {
+        Debug.Log("Cutscene ended — enabling behaviors.");
+
+        // Enable interaction
+        if (throwable != null)
+            throwable.enabled = true;
+
+        if (grabInteractable != null)
+            grabInteractable.enabled = true;
+
+        // Unfreeze physics
+        Rigidbody rb = GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            rb.isKinematic = false;
+        }
+
+        // AI will still wait until mochi hits the ground
+    }
+
 }

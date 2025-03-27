@@ -4,6 +4,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class TwoHandedThrow : MonoBehaviour
 {
     public float Throwforce = 20f;
+    public float verticalBoost = 5f; // Tweak this value to your liking
     public TrailRenderer tr;
 
     private XRBaseInteractor leftHand;
@@ -101,11 +102,15 @@ public class TwoHandedThrow : MonoBehaviour
             rb.useGravity = true;
             rb.isKinematic = false;
 
-            Vector3 throwVelocity = (leftHandVelocity + rightHandVelocity) / 2;
+            Vector3 throwVelocity = (leftHandVelocity + rightHandVelocity);
             float handSpeedDifference = (leftHandVelocity - rightHandVelocity).magnitude;
             throwVelocity += throwVelocity.normalized * handSpeedDifference * 1f;
 
-            rb.velocity = throwVelocity * 1.5f * Throwforce;
+
+            
+            throwVelocity.y += verticalBoost;
+
+            rb.velocity = throwVelocity * 3f * Throwforce;
             Vector3 spin = Vector3.Cross(leftHandVelocity, rightHandVelocity) * 0.7f;
             rb.angularVelocity = spin;
 
@@ -115,4 +120,5 @@ public class TwoHandedThrow : MonoBehaviour
             Debug.Log("Object thrown with velocity: " + rb.velocity);
         }
     }
+
 }

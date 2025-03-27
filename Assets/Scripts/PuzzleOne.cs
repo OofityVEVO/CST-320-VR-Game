@@ -63,6 +63,8 @@ public class PuzzleOne : MonoBehaviour
 
     IEnumerator ClimbDownAndOpenDoor(GameObject Mochi)
     {
+        Mochi_Controller controller = Mochi.GetComponent<Mochi_Controller>();
+        controller.EnterCutsceneMode();
         Debug.Log("Mochi is on top of the cell bars!");
         isOpening = true;
         float elapsedTime = 0f;
@@ -88,6 +90,7 @@ public class PuzzleOne : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         StartCoroutine(OpenDoor());
+        controller.ExitCutsceneMode();
     }
 
     IEnumerator OpenDoor()

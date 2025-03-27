@@ -11,6 +11,7 @@ TagManager:
   - Chitter_Interactable
   - Guard
   - SleepPotion
+  - Ground
   - NoteClick
   - NoteCleaner
   layers:

@@ -25,7 +25,7 @@ public class spawnGuards : MonoBehaviour
         else
         {
             guards.SetActive(false);
-            Debug.Log("Potion is not in the scene");
+            //Debug.Log("Potion is not in the scene");
         }
 
         
