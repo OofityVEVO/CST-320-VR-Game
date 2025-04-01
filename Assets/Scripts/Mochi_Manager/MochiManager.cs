@@ -71,6 +71,8 @@ public class MochiManager : MonoBehaviour
     {
         interactable = newInteractable;
         interactScript = interactable.GetComponent<MochiInteractBase>();
+        currState = mochiInteract;
+        currState.StartState(this);
     }
 
     public void ResetAgent()

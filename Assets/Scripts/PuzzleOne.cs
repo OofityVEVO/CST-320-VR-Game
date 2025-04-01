@@ -31,16 +31,22 @@ public class PuzzleOne : MonoBehaviour
     public AudioSource source;
     public AudioClip doorOpen;
 
+    [Header("SceneAudio")]
+    public DialogueScene beginDialogueScene;
+
+
     void Start()
     {
         if (MochiEvent1 == null)
             MochiEvent1 = new GameObjectEvent();
 
         MochiEvent1.AddListener(PuzzleSolve);
+        beginDialogueScene.PlayAudio();
     }
 
     void OnTriggerEnter(Collider collide)
     {
+        beginDialogueScene.keepPlaying = false;
         if (collide.gameObject.CompareTag("Chitterkin"))
         {
             mochiRigidbody = collide.gameObject.GetComponent<Rigidbody>();

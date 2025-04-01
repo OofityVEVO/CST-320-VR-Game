@@ -19,8 +19,11 @@ public class SmashCage : MonoBehaviour
     public UnityEvent event1;
     public GameObject realMochi;
 
+    [Header("Audio Stuff")]
     AudioSource audioSource;
     public AudioClip hitSound;
+    public DialogueScene dialogueScene;
+    public DialogueScene cageBreakDialogueScene;
 
     void Start()
     {
@@ -52,7 +55,9 @@ public class SmashCage : MonoBehaviour
             {
                 event1.Invoke();
                 event1.RemoveListener(WakeGameObject);
+                dialogueScene.keepPlaying = false;
                 Destroy(gameObject);
+                cageBreakDialogueScene.PlayAudio();
             }
         }
     }
