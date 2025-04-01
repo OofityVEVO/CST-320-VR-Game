@@ -16,7 +16,7 @@ public class ChangeScene: MonoBehaviour
     void onCollisionEnter(Collision collision)
     {
       
-        Debug.Log("Collision");
+       
         SceneManager.LoadScene(sceneName);
        
     }
