@@ -80,18 +80,21 @@ public class Mochi_Controller : MonoBehaviour
         Debug.Log("Object released!");
         handCount--;
 
+        /*
         if (throwable != null)
         {
             if (handCount <= 0)
             {
-                throwable.ThrowObject();
-                handCount = 0;
+                
             }
             else
             {
                 throwable.StopTrackingHands(grabInteractable);
             }
-        }
+        }*/
+
+        throwable.ThrowObject();
+        handCount = 0;
     }
 
     private void OnCollisionEnter(Collision collision)
