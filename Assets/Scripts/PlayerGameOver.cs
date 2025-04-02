@@ -36,6 +36,7 @@ public class PlayerGameOver : MonoBehaviour
     void GameOver()
     {
         GameOverUI.SetActive(true);
+
         Cam.clearFlags = CameraClearFlags.SolidColor;
         Cam.backgroundColor = Color.black;
         Cam.cullingMask = 1 << LayerMask.NameToLayer("UI");
@@ -52,11 +53,16 @@ public class PlayerGameOver : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void TriggerGameOver()
     {
-        if (other.CompareTag("Guard"))
+        isGameOver = true;
+    }
+    
+    private void OnTriggerStay(Collider other)
+    {
+        if (other is SphereCollider)
         {
-            if (other is SphereCollider)
+            if (other.CompareTag("Guard"))
             {
                 isGameOver = true;
             }

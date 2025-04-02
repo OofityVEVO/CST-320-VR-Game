@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.XR.CoreUtils;
 using UnityEngine;
 
 public class ActivateGuards : MonoBehaviour
@@ -17,8 +18,12 @@ public class ActivateGuards : MonoBehaviour
             //Debug.Log("Player Collided");
             foreach (GameObject Guard in Guards)
             {
+                GameObject child = Guard.transform.Find("guard")?.gameObject;
+
                 Guard.SetActive(true);
-                Guard.GetComponent<ToLocation>().ToFlag();
+                child.SetActive(true);
+
+                child.GetComponent<ToLocationGuard>().Begin();
             }
         }
 
