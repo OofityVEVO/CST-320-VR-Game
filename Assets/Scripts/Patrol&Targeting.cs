@@ -138,6 +138,7 @@ public class PatrolTargeting : MonoBehaviour
             {
                 animationScript.isRunning = false;
                 animationScript.isWalking = false;
+                animationScript.changeAnimation("idle");
             }
             else if (!lookingForPlayer && !distracted)
             {
