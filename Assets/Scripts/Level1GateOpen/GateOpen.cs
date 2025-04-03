@@ -22,7 +22,7 @@ public class GateOpen : MonoBehaviour
 
             LeftDoor.transform.Rotate(0, rotationStep, 0);
             RightDoor.transform.Rotate(0, -rotationStep, 0);
-            PrisonDoor.transform.Rotate(0, rotationStep, 0);
+            PrisonDoor.transform.Rotate(0, (float)(rotationStep / 1.5), 0);
 
             currentRotation += rotationStep;
         }

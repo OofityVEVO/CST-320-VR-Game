@@ -13,37 +13,15 @@ public class SnapPlankDoor : MonoBehaviour
 
     public GameObject lockPlank;
 
+    [Header("Audio")]
     private AudioSource source;
     public AudioClip placePlank;
-
+    public DialogueScene lockedPlankScene;
 
     void Start()
     {
         lockPlank.SetActive(false);
     }
-
-    void Update()
-    {
-
-        if (!isSnapped) { 
-            if (timer <= 0)
-            {
-                //Debug.Log("Time is up");
-            }
-
-            else
-            {
-                timer -= Time.deltaTime;
-               
-            }
-        }
-
-        else
-        {
-            Debug.Log("Plank is snapped");
-        }
-    }
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -54,9 +32,20 @@ public class SnapPlankDoor : MonoBehaviour
             source.PlayOneShot(placePlank);
             isSnapped = true;
             Debug.Log("Plank is snapped");
+        }
+    }
 
+    IEnumerator Timer()
+    {
+        yield return new WaitForSeconds(timer);
 
+        if(isSnapped)
+        {
 
+        }
+        else 
+        {
+            // Put gameOver Script in this
         }
     }
 

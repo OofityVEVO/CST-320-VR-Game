@@ -29,6 +29,11 @@ public class DialogueScene : MonoBehaviour
         }
     }
 
+    public void StopAudiio()
+    {
+        keepPlaying = false;
+    }
+
     IEnumerator PlayScene()
     {
         for (int i = 0; i < scene.Count; i++)
