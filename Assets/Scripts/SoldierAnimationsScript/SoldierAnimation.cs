@@ -5,11 +5,14 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 using UnityEngine.XR.Interaction.Toolkit.AffordanceSystem.Receiver.Primitives;
+using static Unity.VisualScripting.Member;
 
 public class soldierAnimation : MonoBehaviour
 {
     private Animator animator;
     private Vector3 lastPosition;
+    private AudioSource audio;
+    private Transform child;
     // Start is called before the first frame update
 
    
@@ -27,6 +30,12 @@ public class soldierAnimation : MonoBehaviour
     {
         //intializes animator
         animator = GetComponent<Animator>();
+        audio = GetComponent<AudioSource>();
+        if(audio == null)
+        {
+            child = transform.GetChild(0);
+            audio = child.GetComponent<AudioSource>();
+        }
 
         //sets current position to determine if the soldier is moving
         lastPosition = transform.position;
@@ -54,6 +63,21 @@ public class soldierAnimation : MonoBehaviour
         {
             changeAnimation("sleep");
         }
+
+        if (isRunning == true)
+        {
+            playAudio(1.7f);
+        }
+        else if (isWalking == true)
+        {
+            playAudio(1.4f);
+        }
+
+        else
+        {
+            StopAudio();
+        }
+
 
         checkAnimation();
 
@@ -125,12 +149,33 @@ public class soldierAnimation : MonoBehaviour
         if (isRunning == true)
         {
             changeAnimation("running");
-            Debug.Log("running");
+            
+
         }
         else if (isWalking == true)
         {
+            
             changeAnimation("walking");
+           
+            
         }
     }   
+
+    void playAudio(float pitch)
+    {
+        if (!audio.isPlaying)
+        {
+            audio.Play();
+        }
+        audio.pitch = pitch;
+    }
+
+    void StopAudio()
+    {
+        if (audio.isPlaying)
+        {
+            audio.Stop();
+        }
+    }
 }
 
