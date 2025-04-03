@@ -40,6 +40,9 @@ public class PuzzleOne : MonoBehaviour
         if (MochiEvent1 == null)
             MochiEvent1 = new GameObjectEvent();
 
+        source = GetComponent<AudioSource>();
+
+
         MochiEvent1.AddListener(PuzzleSolve);
         beginDialogueScene.PlayAudio();
     }
