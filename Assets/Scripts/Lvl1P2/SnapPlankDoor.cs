@@ -22,12 +22,7 @@ public class SnapPlankDoor : MonoBehaviour
     void Start()
     {
         lockPlank.SetActive(false);
-<<<<<<< HEAD
     }
-=======
-    }   
-
->>>>>>> YsabelleFInale
 
     private void OnTriggerEnter(Collider other)
     {
@@ -38,23 +33,6 @@ public class SnapPlankDoor : MonoBehaviour
             source.PlayOneShot(placePlank);
             isSnapped = true;
             Debug.Log("Plank is snapped");
-        }
-    }
-
-<<<<<<< HEAD
-    IEnumerator Timer()
-    {
-        yield return new WaitForSeconds(timer);
-
-        if(isSnapped)
-        {
-
-=======
->>>>>>> YsabelleFInale
-        }
-        else 
-        {
-            // Put gameOver Script in this
         }
     }
 
