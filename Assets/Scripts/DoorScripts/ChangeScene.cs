@@ -3,27 +3,49 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
-public class ChangeScene: MonoBehaviour
+public class ChangeScene : MonoBehaviour
 {
-    public string sceneName = "AF_Armory";
-    // Start is called before the first frame update
+    public string sceneName;
+    public bool hasKey;
+    private Collider collider_;
+    private Animator animator;
+
+
+
     void Start()
     {
-        
+        collider_ = GetComponent<Collider>();
+        animator = GetComponent<Animator>();
     }
 
-    void onCollisionEnter(Collision collision)
-    {
-      
-        Debug.Log("Collision");
-        SceneManager.LoadScene(sceneName);
-       
-    }
-
-    // Update is called once per frame
     void Update()
     {
-        
+        if (hasKey == true)
+        {
+
+            collider_.enabled = true;
+            animator.enabled = true;
+
+        }
     }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (hasKey)
+        {
+            // If the player collides with the object, load the scene
+            if (collision.gameObject.tag == "Player")
+                SceneManager.LoadScene("AF_Armory");
+        }
+    }
+    
+    private void OnTriggerStay(Collider key)
+    {
+        if(key.CompareTag("key"))
+        {
+            hasKey = true;
+
+        }
+    }
+
 }

@@ -14,6 +14,7 @@ TagManager:
   - Ground
   - NoteClick
   - NoteCleaner
+  - key
   layers:
   - Default
   - TransparentFX
