@@ -12,6 +12,7 @@ public class SnapPlankDoor : MonoBehaviour
 
 
     public GameObject lockPlank;
+    public GameObject gameOver;
 
     [Header("Audio")]
     private AudioSource source;
@@ -21,7 +22,12 @@ public class SnapPlankDoor : MonoBehaviour
     void Start()
     {
         lockPlank.SetActive(false);
+<<<<<<< HEAD
     }
+=======
+    }   
+
+>>>>>>> YsabelleFInale
 
     private void OnTriggerEnter(Collider other)
     {
@@ -35,6 +41,7 @@ public class SnapPlankDoor : MonoBehaviour
         }
     }
 
+<<<<<<< HEAD
     IEnumerator Timer()
     {
         yield return new WaitForSeconds(timer);
@@ -42,6 +49,8 @@ public class SnapPlankDoor : MonoBehaviour
         if(isSnapped)
         {
 
+=======
+>>>>>>> YsabelleFInale
         }
         else 
         {
@@ -49,7 +58,22 @@ public class SnapPlankDoor : MonoBehaviour
         }
     }
 
-   
+    IEnumerator Timer()
+    {
+        yield return new WaitForSeconds(timer);
+        /*
+        if (isSnapped)
+        {
+
+        }
+        else
+        {
+            // Put gameOver Script in this
+            gameOver.enabled = true;
+        }*/
+    }
+
+
 
 
 }
