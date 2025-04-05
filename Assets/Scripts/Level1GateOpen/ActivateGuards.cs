@@ -6,10 +6,7 @@ using UnityEngine;
 public class ActivateGuards : MonoBehaviour
 {
     [SerializeField] GameObject[] Guards;
-
-    void Start()
-    {
-    }
+    [SerializeField] GameObject MissPlane;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -25,8 +22,9 @@ public class ActivateGuards : MonoBehaviour
 
                 child.GetComponent<ToLocationGuard>().Begin();
             }
-        }
 
-        Destroy(gameObject);
+            MissPlane.SetActive(true);
+            Destroy(gameObject);
+        }
     }
 }

@@ -8,12 +8,16 @@ public class GateButton : MonoBehaviour
     [SerializeField] GameObject NextLocation;
     [SerializeField] GameObject[] Guards;
     [SerializeField] GameObject[] Chitterkins;
-
+    [SerializeField] GameObject MissPlane;
+    [SerializeField] GameObject Countdown;
+    [SerializeField] GameObject PlayerXROrigin;
     ActivateChitter activateChitter;
+    PlayerMovement playerScript;
 
     void Start()
     {
         activateChitter = gameObject.GetComponent<ActivateChitter>();
+        playerScript = PlayerXROrigin.GetComponent<PlayerMovement>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -21,10 +25,14 @@ public class GateButton : MonoBehaviour
         if(other.CompareTag("Chitterkin"))
         {
             Gate.GetComponent<GateOpen>().RunGateOpen();
+            MissPlane.SetActive(false);
+            Countdown.SetActive(false);
+
             activateChitter.Begin();
 
             StartCoroutine(ActivateGuardsWithDelay(17f));
             StartCoroutine(ActivateChitterWithDelay(17f));
+            StartCoroutine(ActivatePlayerMovement(20f));
         }
     }
 
@@ -47,5 +55,12 @@ public class GateButton : MonoBehaviour
         {
             Chitter.GetComponent<ToLocationChitter>().NewLocation(NextLocation);
         }
+    }
+
+    private IEnumerator ActivatePlayerMovement(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        playerScript.enabled = true;
     }
 }
