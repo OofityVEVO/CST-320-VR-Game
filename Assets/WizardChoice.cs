@@ -68,10 +68,14 @@ public class WizardChoice : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Interactable")) // checks if the player has entered the trigger
+        if (other.CompareTag("key")) // checks if the player has entered the trigger
         {
             isFree = true; // releases the wizard
 
         }
+        
+        
+        
+        
     }
 }
