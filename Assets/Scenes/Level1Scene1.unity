@@ -9477,10 +9477,6 @@ MonoBehaviour:
       m_Calls: []
   realMochi: {fileID: 8164078558774735722}
   hitSound: {fileID: 8300000, guid: a0523d9ba3f388f40bfef44250990e09, type: 3}
-<<<<<<< HEAD
-  dialogueScene: {fileID: 1149968060}
-  cageBreakDialogueScene: {fileID: 1635701716}
-=======
   dialogueScene: {fileID: 0}
   cageBreakDialogueScene: {fileID: 0}
 --- !u!82 &155433628
@@ -23337,11 +23333,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-<<<<<<< HEAD
-  m_VoxelSize: 0.083333336
-=======
   m_VoxelSize: 0.06666667
->>>>>>> YsabelleFInale
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: f55a270c54fa25c41b89c37afe929053, type: 2}
   m_BuildHeightMesh: 0
@@ -30823,11 +30815,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 837670719386152720, guid: 86035d929f3beda4d9df9921aec3db96, type: 3}
       insertIndex: -1
-<<<<<<< HEAD
-      addedObject: {fileID: 815388335}
-=======
       addedObject: {fileID: 1341504534}
->>>>>>> YsabelleFInale
   m_SourcePrefab: {fileID: 100100000, guid: 86035d929f3beda4d9df9921aec3db96, type: 3}
 --- !u!1 &815388334 stripped
 GameObject:
@@ -33372,11 +33360,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 837670719386152720, guid: 86035d929f3beda4d9df9921aec3db96, type: 3}
       insertIndex: -1
-<<<<<<< HEAD
-      addedObject: {fileID: 894512643}
-=======
       addedObject: {fileID: 1977064228}
->>>>>>> YsabelleFInale
   m_SourcePrefab: {fileID: 100100000, guid: 86035d929f3beda4d9df9921aec3db96, type: 3}
 --- !u!1 &894512642 stripped
 GameObject:
@@ -57936,11 +57920,7 @@ MonoBehaviour:
   climbDuration: 2
   source: {fileID: 0}
   doorOpen: {fileID: 8300000, guid: 20e0bf66763c94349bfe677f597312d5, type: 3}
-<<<<<<< HEAD
-  beginDialogueScene: {fileID: 1149968060}
-=======
   beginDialogueScene: {fileID: 0}
->>>>>>> YsabelleFInale
 --- !u!65 &1242940551
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -60855,13 +60835,8 @@ MonoBehaviour:
   mochi: {fileID: 8164078558774735722}
   guard1_balcony: {fileID: 1645799319}
   guard2_balcony: {fileID: 1607938920}
-<<<<<<< HEAD
-  guard1_arrest: {fileID: 671225082}
-  guard2_arrest: {fileID: 18141140}
-=======
   guard1_arrest: {fileID: 1341504531}
   guard2_arrest: {fileID: 1977064225}
->>>>>>> YsabelleFInale
   sources: []
 --- !u!1 &1339963576 stripped
 GameObject:
@@ -69586,19 +69561,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-<<<<<<< HEAD
-  m_audioClip: {fileID: 8300000, guid: 454fb843fec8fd742ab55853c7d6690e, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.25
-  m_Pitch: 1.4
-  Loop: 1
-=======
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
->>>>>>> YsabelleFInale
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -71045,19 +71012,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-<<<<<<< HEAD
-  m_audioClip: {fileID: 8300000, guid: 454fb843fec8fd742ab55853c7d6690e, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 0.25
-  m_Pitch: 1.4
-  Loop: 1
-=======
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
->>>>>>> YsabelleFInale
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
