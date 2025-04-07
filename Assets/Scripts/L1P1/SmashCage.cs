@@ -55,7 +55,9 @@ public class SmashCage : MonoBehaviour
             {
                 event1.Invoke();
                 event1.RemoveListener(WakeGameObject);
-                dialogueScene.keepPlaying = false;
+                if (dialogueScene != null) { dialogueScene.keepPlaying = false; }
+                else { Debug.Log("No Dialogue Scene"); }
+                
                 Destroy(gameObject);
                 cageBreakDialogueScene.PlayAudio();
             }

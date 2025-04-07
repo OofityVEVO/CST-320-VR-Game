@@ -36,17 +36,25 @@ public class DialogueScene : MonoBehaviour
 
     IEnumerator PlayScene()
     {
-        for (int i = 0; i < scene.Count; i++)
+        if (scene != null)
         {
-            if (!keepPlaying) break;
+            for (int i = 0; i < scene.Count; i++)
+            {
+                if (!keepPlaying) break;
 
-            AudioClip clip = scene[i].line;
-            AudioSource source = manager.sources[(int)scene[i].character];
+                AudioClip clip = scene[i].line;
+                AudioSource source = manager.sources[(int)scene[i].character];
 
-            source.PlayOneShot(clip);
+                source.PlayOneShot(clip);
 
-            yield return new WaitForSeconds(clip.length + scene[i].timeAfterSound);
+                yield return new WaitForSeconds(clip.length + scene[i].timeAfterSound);
+            }
         }
+        else
+        {
+            Debug.Log("There is no dialogue lines in the script");
+        }
+        
 
         playingCoroutine = null;
     }
