@@ -44,7 +44,8 @@ public class PuzzleOne : MonoBehaviour
 
 
         MochiEvent1.AddListener(PuzzleSolve);
-        beginDialogueScene.PlayAudio();
+        if (beginDialogueScene != null) { beginDialogueScene.PlayAudio(); }
+        else { Debug.Log("No Dialogue Scene"); }
     }
 
     void OnTriggerEnter(Collider collide)
