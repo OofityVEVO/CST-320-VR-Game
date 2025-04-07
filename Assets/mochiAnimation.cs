@@ -24,6 +24,7 @@ public class mochiAnimation : MonoBehaviour
         if(transform.position != lastPosition)
         {
             mochiAnimator.Play("Walk");
+            lastPosition = transform.position;
         }
         else
         {
