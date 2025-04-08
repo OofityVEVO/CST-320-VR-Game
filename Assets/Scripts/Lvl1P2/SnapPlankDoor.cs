@@ -49,6 +49,7 @@ public class SnapPlankDoor : MonoBehaviour
 
         if (isSnapped)
         {
+            lockedPlankScene.PlayAudio();
         }
         else
         {
