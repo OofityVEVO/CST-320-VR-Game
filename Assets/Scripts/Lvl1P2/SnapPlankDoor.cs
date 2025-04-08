@@ -36,6 +36,7 @@ public class SnapPlankDoor : MonoBehaviour
         }
     }
 
+    // Should Start Disabled, when the guards point the gameObject will be enabled
     private void OnEnable()
     {
         Debug.Log("Timer started");
