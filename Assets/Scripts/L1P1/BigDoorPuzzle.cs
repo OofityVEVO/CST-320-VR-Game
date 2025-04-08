@@ -9,9 +9,11 @@ public class BigDoorPuzzle : MonoBehaviour
     [Header("Door Settings")]
     public GameObject leftDoor;
     public GameObject rightDoor;
-    public float openAngle = 90f; // Adjust to match your door's rotation
-    public float closeAngle = 0f;
-    public float speed = 2f; // Adjust speed for smoother opening
+    public float RotationAmount = 120f;
+    public float RotationSnap = 1f;
+    private float currentRotation = 0f;
+    private bool isOpening = false;
+
     //private bool isOpening = false;
     public float duration = 2f;
 
@@ -44,7 +46,17 @@ public class BigDoorPuzzle : MonoBehaviour
         {
             StartCoroutine(OpenDoorCoroutine());
         }
-        
+
+        if (isOpening && currentRotation < RotationAmount)
+        {
+            float rotationStep = Mathf.Min(RotationSnap, RotationAmount - currentRotation);
+
+            leftDoor.transform.Rotate(0, -rotationStep, 0);
+            rightDoor.transform.Rotate(0, rotationStep, 0);
+
+            currentRotation += rotationStep;
+        }
+
     }
 
     void OpenUIPrompt(float distance1, float distance2)
@@ -93,7 +105,7 @@ public class BigDoorPuzzle : MonoBehaviour
                 activatedButton1.SetActive(true);
                 button1_Pressed = true;
                 Debug.Log("The Left button is active!");
-                yield return new WaitForSeconds(1);
+                yield return new WaitForSeconds(5);
                 button1.SetActive(true);
                 activatedButton1.SetActive(false);
                 button1_Pressed = false;
@@ -104,7 +116,7 @@ public class BigDoorPuzzle : MonoBehaviour
                 activatedButton2.SetActive(true);
                 button2_Pressed = true;
                 Debug.Log("The Right button is active!");
-                yield return new WaitForSeconds(1);
+                yield return new WaitForSeconds(5);
                 button2.SetActive(true);
                 activatedButton2.SetActive(false);
                 button2_Pressed = false;
@@ -116,22 +128,9 @@ public class BigDoorPuzzle : MonoBehaviour
     
     IEnumerator OpenDoorCoroutine()
     {
-        float elapsedTime = 0f;
-        Quaternion startRotation = rightDoor.transform.localRotation;
-        Quaternion endRotation = Quaternion.Euler(rightDoor.transform.localEulerAngles.x, openAngle, rightDoor.transform.localEulerAngles.z);
+        isOpening = true;
 
-        while (elapsedTime < duration)
-        {
-            float t = elapsedTime / duration;
-            t = Mathf.Clamp01(t);  // Ensure t is within 0 and 1
-
-            rightDoor.transform.localRotation = Quaternion.Slerp(startRotation, endRotation, t);
-            elapsedTime += Time.deltaTime * speed;
-            yield return null;
-        }
-
-        rightDoor.transform.localRotation = endRotation;
-        //isOpening = false;  // Allow re-triggering
         Debug.Log("Door has been opened");
+        yield return null;
     }
 }
