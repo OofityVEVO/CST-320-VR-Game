@@ -8,6 +8,8 @@ public class animationTrigger : MonoBehaviour
     [SerializeField] public GameObject guard2;
     [SerializeField] public GameObject timer;
 
+    public DialogueScene guardSpotScene;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
@@ -18,6 +20,10 @@ public class animationTrigger : MonoBehaviour
             timer.SetActive(true);
 
             Debug.Log("Collision Detected");
+            if(guardSpotScene != null)
+            {
+                guardSpotScene.PlayAudio();
+            }
         }
     }
 }

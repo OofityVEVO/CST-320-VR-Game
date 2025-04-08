@@ -33,6 +33,7 @@ public class PuzzleOne : MonoBehaviour
 
     [Header("SceneAudio")]
     public DialogueScene beginDialogueScene;
+    public DialogueScene DungeonDoorOpenScene;
 
 
     void Start()
@@ -128,5 +129,10 @@ public class PuzzleOne : MonoBehaviour
         }
 
         Debug.Log("Door has been opened!");
+
+        if(DungeonDoorOpenScene != null)
+        {
+            DungeonDoorOpenScene.PlayAudio();
+        }
     }
 }
