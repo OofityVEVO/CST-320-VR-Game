@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
@@ -10,12 +11,11 @@ public class SnapPlankDoor : MonoBehaviour
     public float timer = 10f;
     public bool isSnapped = false;
 
-
     public GameObject lockPlank;
     public GameObject gameOver;
 
     [Header("Audio")]
-    private AudioSource source;
+    public AudioSource source;
     public AudioClip placePlank;
     public DialogueScene lockedPlankScene;
 
@@ -24,7 +24,7 @@ public class SnapPlankDoor : MonoBehaviour
         lockPlank.SetActive(false);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.name == "Plank") 
         {
@@ -36,22 +36,23 @@ public class SnapPlankDoor : MonoBehaviour
         }
     }
 
-    IEnumerator Timer()
+    private void OnEnable()
     {
-        yield return new WaitForSeconds(timer);
-        /*
+        Debug.Log("Timer started");
+        StartCoroutine(SnapPlankDoorTimer(timer));
+    }
+
+    private IEnumerator SnapPlankDoorTimer(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
         if (isSnapped)
         {
-
         }
         else
         {
             // Put gameOver Script in this
-            gameOver.enabled = true;
-        }*/
+            gameOver.SetActive(true);
+        }
     }
-
-
-
-
 }
