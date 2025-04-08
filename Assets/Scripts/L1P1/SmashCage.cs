@@ -18,7 +18,7 @@ public class SmashCage : MonoBehaviour
 
     public UnityEvent event1;
     public GameObject realMochi;
-
+    private GameObject panel;
 
     [Header("Audio Stuff")]
     AudioSource audioSource;
@@ -35,6 +35,8 @@ public class SmashCage : MonoBehaviour
 
         event1.AddListener(WakeGameObject);
         realMochi.SetActive(false); 
+
+        panel = GameObject.Find("PanelPlayer");
     }
 
 
@@ -62,7 +64,7 @@ public class SmashCage : MonoBehaviour
 
                 guardSleepSound.StartAudio();
 
-
+                panel.SetActive(true);
                 Destroy(gameObject);
                 cageBreakDialogueScene.PlayAudio();
             }
