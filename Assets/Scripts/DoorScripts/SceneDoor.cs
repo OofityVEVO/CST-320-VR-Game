@@ -5,7 +5,7 @@ using UnityEngine;
 public class SceneDoor : MonoBehaviour
 {
     public bool hasKey = false;
-    private GameObject nextScene;
+    public GameObject nextScene;
     private Animator door;
 
 
