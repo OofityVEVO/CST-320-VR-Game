@@ -9371,6 +9371,7 @@ GameObject:
   m_Component:
   - component: {fileID: 153897990}
   - component: {fileID: 153897992}
+  - component: {fileID: 153897993}
   m_Layer: 0
   m_Name: Puzzle2_0
   m_TagString: Untagged
@@ -9393,6 +9394,7 @@ Transform:
   m_Children:
   - {fileID: 1598537344}
   - {fileID: 551069652}
+  - {fileID: 848645338}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &153897992
@@ -9423,6 +9425,24 @@ MonoBehaviour:
   activatedButton2: {fileID: 2017654983}
   uiPrompt2: {fileID: 1737917567}
   button2_Pressed: 0
+  BigDoorOpenDialogue: {fileID: 0}
+--- !u!114 &153897993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 153897989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 613853e386ca6f140a6ce17464a2f008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 0}
+  keepPlaying: 1
+  scene:
+  - {fileID: 11400000, guid: 987cd37b7d2596345b2af50a3bbbc18d, type: 2}
+  - {fileID: 11400000, guid: 738d132bd64c880489051bd74c02b23c, type: 2}
 --- !u!1 &155433616
 GameObject:
   m_ObjectHideFlags: 0
@@ -32553,6 +32573,92 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 2.505, z: 0}
   m_TimeToStationary: 0.5
+--- !u!1 &848645337
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 848645338}
+  - component: {fileID: 848645341}
+  - component: {fileID: 848645340}
+  - component: {fileID: 848645339}
+  m_Layer: 0
+  m_Name: DialogueCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &848645338
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 848645337}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12.92, y: 0, z: 12.81}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 153897990}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &848645339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 848645337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 613853e386ca6f140a6ce17464a2f008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 1339274504}
+  keepPlaying: 1
+  scene:
+  - {fileID: 11400000, guid: fa79a892f7a80c54e9092c3eaa35f1d0, type: 2}
+  - {fileID: 11400000, guid: 66603e7c08c259d4b840e976e9540595, type: 2}
+  - {fileID: 11400000, guid: 8b8692f49ce67f04793f4202776c4fb1, type: 2}
+--- !u!114 &848645340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 848645337}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0322b16377c581b43b63aac6044cf3cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueScene: {fileID: 848645339}
+--- !u!65 &848645341
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 848645337}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.7034855, y: 6.8834248, z: 10.380753}
+  m_Center: {x: -0.85174274, y: 2.9417124, z: -0.40216827}
 --- !u!1001 &848657914
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37341,6 +37447,7 @@ GameObject:
   - component: {fileID: 989181852}
   - component: {fileID: 989181851}
   - component: {fileID: 989181854}
+  - component: {fileID: 989181855}
   m_Layer: 0
   m_Name: animationTrigger
   m_TagString: Untagged
@@ -37363,6 +37470,7 @@ MonoBehaviour:
   guard1: {fileID: 1645799319}
   guard2: {fileID: 1607938920}
   timer: {fileID: 0}
+  guardSpotScene: {fileID: 0}
 --- !u!65 &989181852
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -37426,6 +37534,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &989181855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989181850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 613853e386ca6f140a6ce17464a2f008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 1339274504}
+  keepPlaying: 1
+  scene: []
 --- !u!1001 &989194955
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -58899,6 +59022,7 @@ MonoBehaviour:
   source: {fileID: 0}
   doorOpen: {fileID: 8300000, guid: 20e0bf66763c94349bfe677f597312d5, type: 3}
   beginDialogueScene: {fileID: 1149968060}
+  DungeonDoorOpenScene: {fileID: 1242940553}
 --- !u!65 &1242940551
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -59030,7 +59154,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   manager: {fileID: 1339274504}
   keepPlaying: 1
-  scene: []
+  scene:
+  - {fileID: 11400000, guid: e0413ddad26529a41af291dfcac47f1a, type: 2}
+  - {fileID: 11400000, guid: e0347cdd5dea75d44ad03ef790181e8a, type: 2}
+  - {fileID: 11400000, guid: bf66eca8915a07c429eaa2d7be3ab910, type: 2}
+  - {fileID: 11400000, guid: a45b3673beca2e64d962e0f7f2c19d04, type: 2}
+  - {fileID: 11400000, guid: 869cc04ca71b076478d4ee2d99a40f7d, type: 2}
+  - {fileID: 11400000, guid: 9459f30044a58ad428b26be898d03978, type: 2}
+  - {fileID: 11400000, guid: 64084a7860878fb4da2e80d84e24a780, type: 2}
 --- !u!1 &1245999785 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 100032, guid: 8e49cba06dcdfc3439b1507dde6d28c0, type: 3}

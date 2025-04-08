@@ -33,6 +33,9 @@ public class BigDoorPuzzle : MonoBehaviour
     public GameObject activatedButton2;
     public GameObject uiPrompt2; 
     public bool button2_Pressed;
+
+    [Header("Audio Settings")]
+    public DialogueScene BigDoorOpenDialogue;
    
     void Update()
     {
