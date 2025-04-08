@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class animationTrigger : MonoBehaviour
 {
-
     [SerializeField] public GameObject guard1;
     [SerializeField] public GameObject guard2;
-    private void OnCollisionEnter(Collision collision)
+    [SerializeField] public GameObject timer;
+
+    private void OnTriggerEnter(Collider other)
     {
-        if(collision.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             //runs animations for the guards once the player passes the door
             guard1.GetComponent<BalconyAnimation>().enabled = true;
             guard2.GetComponent<BalconyAnimation>().enabled = true;
+            timer.SetActive(true);
 
             Debug.Log("Collision Detected");
         }
-       
     }
 }

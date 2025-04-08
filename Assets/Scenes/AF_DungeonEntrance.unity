@@ -7960,6 +7960,7 @@ MonoBehaviour:
   LookAtPlayer: 1
   willRun: 1
   AutoEnable: 0
+  hasLooked: 0
 --- !u!195 &175470260
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -20596,6 +20597,7 @@ MonoBehaviour:
   LookAtPlayer: 1
   willRun: 1
   AutoEnable: 0
+  hasLooked: 0
 --- !u!195 &370874112
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -54856,6 +54858,7 @@ MonoBehaviour:
   LookAtPlayer: 1
   willRun: 1
   AutoEnable: 0
+  hasLooked: 0
 --- !u!195 &1072285608
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -58251,6 +58254,7 @@ MonoBehaviour:
   LookAtPlayer: 1
   willRun: 1
   AutoEnable: 0
+  hasLooked: 0
 --- !u!1001 &1277283531
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74131,6 +74135,7 @@ MonoBehaviour:
   LookAtPlayer: 1
   willRun: 1
   AutoEnable: 0
+  hasLooked: 0
 --- !u!195 &1723875306
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -85425,6 +85430,7 @@ MonoBehaviour:
   LookAtPlayer: 1
   willRun: 1
   AutoEnable: 0
+  hasLooked: 0
 --- !u!195 &1823216753
 NavMeshAgent:
   m_ObjectHideFlags: 0

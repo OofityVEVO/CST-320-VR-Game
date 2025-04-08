@@ -14,6 +14,7 @@ public class ToLocationGuard : MonoBehaviour
     public bool LookAtPlayer;
     public bool willRun;
     public bool AutoEnable = true;
+    public bool hasLooked = false;
 
     int flagIndex = 0;
     NavMeshAgent _navMeshAgent;
@@ -81,14 +82,15 @@ public class ToLocationGuard : MonoBehaviour
     {
         if (HasReachedFlag() && LookAtPlayer)
         {
-            if (LookAtPlayer)
+            if (!hasLooked)
             {
                 transform.LookAt(Player.transform.position);
-            }
+                hasLooked = true;
 
-            animationScript.isRunning = false;
-            animationScript.isWalking = false;
-            animationScript.changeAnimation("idle");
+                animationScript.isRunning = false;
+                animationScript.isWalking = false;
+                animationScript.changeAnimation("idle");
+            }
         }
     }
 }
