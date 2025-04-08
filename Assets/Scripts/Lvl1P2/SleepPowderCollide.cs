@@ -5,6 +5,8 @@ using UnityEngine;
 public class SleepPowderCollide : MonoBehaviour
 {
     public GameObject sleepingPower;
+    public GameObject GuardTimer;
+    public GameObject GuardSummon;
 
     void OnTriggerEnter(Collider collide)
     {
@@ -15,6 +17,9 @@ public class SleepPowderCollide : MonoBehaviour
             {
                 holder.InstantiateGameObject(sleepingPower);
             }
+
+            GuardTimer.SetActive(true);
+            GuardSummon.SetActive(true);
         }
     }
 }

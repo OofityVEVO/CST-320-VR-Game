@@ -1,18 +1,53 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class PotionShatterable : MonoBehaviour
 {
     [SerializeField] GameObject sphereRadius;
+    [SerializeField] GameObject Mochi;
+    [SerializeField] XRGrabInteractable grabInteractable;
+
+    HoldingObject holdingScript;
+
     public float forceThreshold = 10f;
     public float radius = 30f;
+    public float invincibleTime = 3f;
+    bool isInvincible = true;
+
+    void Start()
+    {
+        grabInteractable = GetComponent<XRGrabInteractable>();
+
+        Mochi = GameObject.Find("Mochi");
+        holdingScript = Mochi.GetComponent<HoldingObject>();
+    }
+
+    void Update()
+    {
+        StartCoroutine(InvincibleDelay(invincibleTime));
+
+        // Check if being grabbed
+        if (grabInteractable.isSelected)
+        {
+            // It's being held by a player
+            holdingScript.OnPlayerInteract();
+            Debug.Log("Object is being held");
+        }
+    }
+
+    private IEnumerator InvincibleDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        isInvincible = false;
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
         float impactForce = collision.relativeVelocity.magnitude;
 
-        if (impactForce > forceThreshold)
+        if (impactForce > forceThreshold && !isInvincible)
         {
             createSoundSphere(collision);
             Destroy(gameObject);
