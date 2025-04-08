@@ -28,16 +28,6 @@ public class ChangeScene : MonoBehaviour
 
         }
     }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        if (hasKey)
-        {
-            // If the player collides with the object, load the scene
-            if (collision.gameObject.tag == "Player")
-                SceneManager.LoadScene("AF_Armory");
-        }
-    }
     
     private void OnTriggerStay(Collider key)
     {
@@ -45,6 +35,13 @@ public class ChangeScene : MonoBehaviour
         {
             hasKey = true;
 
+        }
+
+        if (hasKey)
+        {
+            // If the player collides with the object, load the scene
+            if (key.gameObject.tag == "Player")
+                SceneManager.LoadScene("AF_Armory");
         }
     }
 

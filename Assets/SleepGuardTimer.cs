@@ -7,6 +7,8 @@ public class SleepGuardTimer : MonoBehaviour
     [SerializeField] GameObject GameOverCauser;
     [SerializeField] GameObject Guard1;
     [SerializeField] GameObject Guard2;
+    [SerializeField] GameObject Key;
+    [SerializeField] GameObject KeySpawn;
 
     private SleepState Guard1State;
     private SleepState Guard2State;
@@ -27,7 +29,7 @@ public class SleepGuardTimer : MonoBehaviour
 
         if(Guard1State.isAsleep == true && Guard2State.isAsleep == true)
         {
-
+            Instantiate(Key, KeySpawn.transform.position, KeySpawn.transform.rotation);
         }
         else
         {
