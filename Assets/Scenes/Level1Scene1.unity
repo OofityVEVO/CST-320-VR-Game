@@ -11106,7 +11106,7 @@ Transform:
   m_GameObject: {fileID: 202207430}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 1.7, y: -2.96, z: 1.11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -35127,15 +35127,15 @@ RectTransform:
   m_GameObject: {fileID: 932206791}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.46, y: 1.46, z: 1.46}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 747634005}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 345, y: -138}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 11.6666565, y: -22}
+  m_SizeDelta: {x: 2000, y: 2000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &932206793
 MonoBehaviour:
@@ -37305,6 +37305,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   guard1: {fileID: 1645799319}
   guard2: {fileID: 1607938920}
+  timer: {fileID: 0}
 --- !u!65 &989181852
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -80709,7 +80710,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1783132219
 Transform:
   m_ObjectHideFlags: 0
@@ -80719,7 +80720,7 @@ Transform:
   m_GameObject: {fileID: 1783132218}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 40.000538, y: 6.1000886, z: 19.389536}
+  m_LocalPosition: {x: 39.52, y: 6.1000886, z: 19.389536}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -83427,6 +83428,7 @@ MonoBehaviour:
   isSnapped: 0
   lockPlank: {fileID: 1651939542}
   gameOver: {fileID: 0}
+  source: {fileID: 0}
   placePlank: {fileID: 8300000, guid: e61a14ac9b90c744e8b1c1e995487929, type: 3}
   lockedPlankScene: {fileID: 81705797}
 --- !u!82 &1850213310
