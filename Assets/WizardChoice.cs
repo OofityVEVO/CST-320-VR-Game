@@ -11,7 +11,6 @@ public class WizardChoice : MonoBehaviour
     public Transform star; // teleportation effect
 
 
-    public bool isFree = false; //releases Wizard
 
     // Start is called before the first frame update
     void Start()
@@ -26,17 +25,7 @@ public class WizardChoice : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-
-        if (isFree)
-        {
-            StartCoroutine(wizardDance()); // Start the dance coroutine immediately
-
-        }
-    }
-
-
+   
 
 
     IEnumerator wizardDance()
@@ -70,12 +59,8 @@ public class WizardChoice : MonoBehaviour
     {
         if (other.CompareTag("key")) // checks if the player has entered the trigger
         {
-            isFree = true; // releases the wizard
-
+            StartCoroutine(wizardDance());
         }
-        
-        
-        
-        
+
     }
 }
