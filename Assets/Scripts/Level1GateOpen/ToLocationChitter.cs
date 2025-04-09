@@ -65,5 +65,6 @@ public class ToLocationChitter : MonoBehaviour
                 transform.LookAt(LookAtObject.transform.position);
             }
         }
+        transform.rotation = Quaternion.Euler(0,0,0);
     }
 }
