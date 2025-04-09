@@ -8,6 +8,10 @@ public class SleepPowderCollide : MonoBehaviour
     public GameObject GuardTimer;
     public GameObject GuardSummon;
 
+    [Header("Audio Stuff")]
+    public DialogueScene puzzleOccuring;
+    public DialogueScene puzzleSolvedDialogue;
+
     void OnTriggerEnter(Collider collide)
     {
         if (collide.CompareTag("Chitterkin"))
@@ -16,6 +20,8 @@ public class SleepPowderCollide : MonoBehaviour
             if (holder != null)
             {
                 holder.InstantiateGameObject(sleepingPower);
+                puzzleOccuring.StopAudiio();
+                puzzleSolvedDialogue.PlayAudio();
             }
 
             GuardTimer.SetActive(true);

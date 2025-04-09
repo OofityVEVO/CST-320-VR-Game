@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum sourceName {PLAYER, FAKEMOCHI, MOCHI, GUARD1_BALCONY, GUARD2_BALCONY, GUARD1_ARREST, GUARD2_ARREST};
+public enum sourceName {PLAYER, FAKEMOCHI, MOCHI, GUARD1_BALCONY, GUARD2_BALCONY, GUARD1_ARREST, GUARD2_ARREST, WIZARD, BEHINDDOOR};
 public class DialogueManager : MonoBehaviour
 {
     public GameObject player;
@@ -12,12 +12,14 @@ public class DialogueManager : MonoBehaviour
     public GameObject guard2_balcony;
     public GameObject guard1_arrest;
     public GameObject guard2_arrest;
+    public GameObject wizard;
+    public GameObject sourceBehindDoor;
 
     public AudioSource[] sources;
 
     void Awake()
-    {
-        sources = new AudioSource[7];
+    { 
+        sources = new AudioSource[9];
         sources[0] = player.GetComponent<AudioSource>();
         sources[1] = fakeMochi.GetComponent<AudioSource>();
         sources[2] = mochi.GetComponent<AudioSource>();
@@ -25,5 +27,7 @@ public class DialogueManager : MonoBehaviour
         sources[4] = guard2_balcony.GetComponent<AudioSource>();
         sources[5] = guard1_arrest.GetComponent<AudioSource>();
         sources[6] = guard2_arrest.GetComponent<AudioSource>();
+        sources[7] = wizard.GetComponent<AudioSource>();
+        sources[8] = sourceBehindDoor.GetComponent<AudioSource>();
     }
 }
