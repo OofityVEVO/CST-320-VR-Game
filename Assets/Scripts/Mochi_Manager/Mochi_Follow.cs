@@ -9,6 +9,7 @@ public class Mochi_Follow : StateBase
     public override void StartState(MochiManager manager)
     {
         canCheckForInteractables = false; // Prevent checking immediately
+        manager._navMeshAgent.updateRotation = true;
         manager.StartCoroutine(EnableInteractableCheckAfterDelay(manager, 1f)); // Start coroutine
     }
 
@@ -19,6 +20,9 @@ public class Mochi_Follow : StateBase
             CheckForInteractables(manager);
         }
         SetDestination(manager);
+
+       
+
     }
 
     private IEnumerator EnableInteractableCheckAfterDelay(MochiManager manager, float delay)

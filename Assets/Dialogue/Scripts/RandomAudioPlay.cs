@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,6 +6,8 @@ public class RandomAudioPlay : MonoBehaviour
 {
     public List<AudioClip> Clips;
     public AudioSource source;
+
+    public float clipVolume = 1f;
 
     private System.Random rng;
 
@@ -16,11 +18,12 @@ public class RandomAudioPlay : MonoBehaviour
 
     public void PlayRandClip()
     {
-        if (Clips.Count == 0) return; // Prevent errors if list is empty
+        if (Clips.Count == 0) return;
 
-        int clipNum = rng.Next(0, Clips.Count); 
+        int clipNum = rng.Next(0, Clips.Count);
         AudioClip clip = Clips[clipNum];
 
-        source.PlayOneShot(clip);
+        source.PlayOneShot(clip, clipVolume); // ✅ Volume controlled here
     }
+
 }

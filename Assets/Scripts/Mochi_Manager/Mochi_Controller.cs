@@ -12,6 +12,8 @@ public class Mochi_Controller : MonoBehaviour
     private int handCount = 0; // Manual tracking of hands
     private bool hasLanded = false; // To check if object hit the ground
 
+    public RandomAudioPlay throwingSounds;
+
     private void Start()
     {
         // Get components
@@ -93,6 +95,7 @@ public class Mochi_Controller : MonoBehaviour
             }
         }*/
 
+        throwingSounds.PlayRandClip();
         throwable.ThrowObject();
         handCount = 0;
     }

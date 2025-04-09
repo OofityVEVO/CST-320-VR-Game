@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4426526554159333337
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 988185249612991254}
-  m_Layer: 0
-  m_Name: SpawnPoint
-  m_TagString: Chitterkin
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &988185249612991254
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4426526554159333337}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.5824547, y: 2.2955725, z: 4.1408606}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1783816461085382596}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &8910158783974062190
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -97,10 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 7162515243990822826, guid: b4fdca02aa396e1458e14d6210475907, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 988185249612991254}
+    m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 7506811214745629968, guid: b4fdca02aa396e1458e14d6210475907, type: 3}
       insertIndex: -1
@@ -168,6 +134,7 @@ MonoBehaviour:
   _navMeshAgent: {fileID: 0}
   _playerDestination: {fileID: 0}
   rb: {fileID: 0}
+  mochi_YRotation: 90
   interactDistance: 2
   interactable: {fileID: 0}
   interactScript: {fileID: 0}
@@ -546,7 +513,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a119b671592faa54f86afdf63f0ca0f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anchorPoint: {fileID: 988185249612991254}
+  anchorPoint: {fileID: 0}
 --- !u!82 &6043095698651444546
 AudioSource:
   m_ObjectHideFlags: 0
@@ -643,8 +610,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!4 &1783816461085382596 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7162515243990822826, guid: b4fdca02aa396e1458e14d6210475907, type: 3}
-  m_PrefabInstance: {fileID: 8910158783974062190}
-  m_PrefabAsset: {fileID: 0}

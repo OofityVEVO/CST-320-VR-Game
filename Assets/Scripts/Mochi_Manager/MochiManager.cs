@@ -11,7 +11,7 @@ public abstract class StateBase
 
 public class MochiManager : MonoBehaviour
 {
-    
+
     [Header("Mochi States")]
     public StateBase currState;
     public StateBase mochiStandby;
@@ -22,6 +22,9 @@ public class MochiManager : MonoBehaviour
     public UnityEngine.AI.NavMeshAgent _navMeshAgent;
     public Transform _playerDestination;
     public Rigidbody rb;
+    public float mochiYRotation = 90f;
+    public Transform visualRoot; // Drag the VisualMochi here in the Inspector
+
 
     [Header("Interact Behavior Information")]
     public float interactDistance = 2.5f; //distance from the object it will stand at
@@ -45,6 +48,8 @@ public class MochiManager : MonoBehaviour
     {
         _navMeshAgent = this.GetComponent<UnityEngine.AI.NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
+        _navMeshAgent.updateRotation = false;
+
         interactable = null;
 
         mochiStandby = new Mochi_Standby();
@@ -58,7 +63,29 @@ public class MochiManager : MonoBehaviour
     public void Update()
     {
         currState.UpdateState(this);
+        FacePlayer();
         // Debug.Log("Current State: " + currState.GetType().Name);
+
+
+        /*
+        if (_playerDestination != null)
+        {
+            Vector3 lookDirection = _playerDestination.position - transform.position;
+            lookDirection.y = 0f; // Prevents Mochi from tilting up/down
+            lookDirection.z = 90f;
+            lookDirection.x = 90f;
+            if (lookDirection != Vector3.zero)
+            {
+                Quaternion targetRotation = Quaternion.LookRotation(lookDirection);
+                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
+            }
+        }
+        */
+
+
+        Debug.DrawLine(visualRoot.position, _playerDestination.position, Color.green);
+
+
     }
 
     public void SwitchState(StateBase newState)
@@ -83,5 +110,24 @@ public class MochiManager : MonoBehaviour
         _navMeshAgent.enabled = false; // Disables and reenables to fully reset
         _navMeshAgent.enabled = true;
     }
+
+    private void FacePlayer()
+    {
+        if (_playerDestination == null || visualRoot == null) return;
+
+        Vector3 direction = _playerDestination.position - visualRoot.position;
+        direction.y = 0f;
+
+        if (direction != Vector3.zero)
+        {
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            Quaternion correctedRotation = lookRotation * Quaternion.Euler(0, mochiYRotation, 0); // <<< Add this
+
+            visualRoot.rotation = Quaternion.Slerp(visualRoot.rotation, correctedRotation, Time.deltaTime * 5f);
+        }
+    }
+
+
+
 
 }
