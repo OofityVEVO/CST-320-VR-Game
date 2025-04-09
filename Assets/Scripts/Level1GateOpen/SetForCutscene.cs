@@ -26,6 +26,9 @@ public class SetForCutscene : MonoBehaviour
 
     private void OnTriggerEnter(Collider collision)
     {
-        StartCutscene();
+        if (collision.CompareTag("Player"))
+        {
+            StartCutscene();
+        }
     }
 }

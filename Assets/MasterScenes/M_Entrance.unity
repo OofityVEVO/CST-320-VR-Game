@@ -20640,8 +20640,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.17048134, y: 0.054095995, z: 0.17073454}
-  m_Center: {x: -0.00000006357829, y: 0.1013344, z: 0.00000038941704}
+  m_Size: {x: 0.17048125, y: 0.0855114, z: 0.17073454}
+  m_Center: {x: -0.000000063578284, y: 0.11704203, z: 0.00000038941704}
 --- !u!114 &373192443
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55844,7 +55844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameOverCauser: {fileID: 154892803}
-  countdownTime: 15
+  countdownTime: 25
   currentTime: 0
 --- !u!1001 &1201006896
 PrefabInstance:
