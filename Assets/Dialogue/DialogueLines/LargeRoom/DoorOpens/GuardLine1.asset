@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cafdcc56eb3770458f769c79aca6d14, type: 3}
   m_Name: GuardLine1
   m_EditorClassIdentifier: 
-  character: 3
+  character: 0
   line: {fileID: 8300000, guid: 5f6ad077ad415b34e83efc3564bffa0b, type: 3}
   timeAfterSound: 0

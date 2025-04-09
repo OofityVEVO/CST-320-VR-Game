@@ -14,6 +14,8 @@ public class GateButton : MonoBehaviour
     ActivateChitter activateChitter;
     PlayerMovement playerScript;
 
+    public DialogueScene ButtonHit;
+
     void Start()
     {
         activateChitter = gameObject.GetComponent<ActivateChitter>();
@@ -29,6 +31,7 @@ public class GateButton : MonoBehaviour
             Countdown.SetActive(false);
 
             activateChitter.Begin();
+            ButtonHit.PlayAudio();
 
             StartCoroutine(ActivateGuardsWithDelay(17f));
             StartCoroutine(ActivateChitterWithDelay(17f));

@@ -32,6 +32,8 @@ public class WizardChoice : MonoBehaviour
 
     IEnumerator wizardDance()
     {
+        goodEndingScene.PlayAudio();
+
         float wait1 = .5f; // wait time before wizard starts dancing
         float wait2 = 3.7f; // wait time before wizard teleports
         float wait3 = 0.3f; // wait time for teleportation effect to play

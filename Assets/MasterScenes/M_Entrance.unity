@@ -20600,6 +20600,7 @@ MonoBehaviour:
   MissPlane: {fileID: 726744898}
   Countdown: {fileID: 1197454345}
   PlayerXROrigin: {fileID: 172123333}
+  ButtonHit: {fileID: 0}
 --- !u!65 &373192439
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -33131,6 +33132,8 @@ GameObject:
   - component: {fileID: 609814347}
   - component: {fileID: 609814351}
   - component: {fileID: 609814352}
+  - component: {fileID: 609814354}
+  - component: {fileID: 609814353}
   m_Layer: 0
   m_Name: TriggerCutscene
   m_TagString: Untagged
@@ -33261,6 +33264,39 @@ MonoBehaviour:
   Countdown: {fileID: 1197454345}
   PlayerTeleportLocation: {fileID: 74307447}
   MochiTeleportLocation: {fileID: 232990766}
+--- !u!114 &609814353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609814346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 613853e386ca6f140a6ce17464a2f008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 1512261353}
+  keepPlaying: 1
+  scene:
+  - {fileID: 11400000, guid: 3ddc2897e064898449184444b8447d70, type: 2}
+  - {fileID: 11400000, guid: 7fb0283b0f95163449757d2ffe3a0aca, type: 2}
+  - {fileID: 11400000, guid: 11aa0d7dd67d5484fa9f189320ab8468, type: 2}
+  - {fileID: 11400000, guid: 2a782e65a271c254f92d7bce6d98914e, type: 2}
+  - {fileID: 11400000, guid: 11aa0d7dd67d5484fa9f189320ab8468, type: 2}
+--- !u!114 &609814354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 609814346}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2850e2380f815346b60bdccb3bdda44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audios: {fileID: 609814353}
 --- !u!1001 &610793915
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -92418,9 +92454,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6130191330354909825, guid: f24aff942c030f54a8d90d0cd8eac301, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2509371941798852058}
-    - targetCorrespondingSourceObject: {fileID: 6130191330354909825, guid: f24aff942c030f54a8d90d0cd8eac301, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2509371941798852059}
   m_SourcePrefab: {fileID: 100100000, guid: f24aff942c030f54a8d90d0cd8eac301, type: 3}
 --- !u!4 &2509371941798852056 stripped
 Transform:
@@ -92444,27 +92477,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2850e2380f815346b60bdccb3bdda44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audios: {fileID: 2509371941798852059}
---- !u!114 &2509371941798852059
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2509371941798852057}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 613853e386ca6f140a6ce17464a2f008, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manager: {fileID: 1512261353}
-  keepPlaying: 1
-  scene:
-  - {fileID: 11400000, guid: 3ddc2897e064898449184444b8447d70, type: 2}
-  - {fileID: 11400000, guid: 7fb0283b0f95163449757d2ffe3a0aca, type: 2}
-  - {fileID: 11400000, guid: 11aa0d7dd67d5484fa9f189320ab8468, type: 2}
-  - {fileID: 11400000, guid: 2a782e65a271c254f92d7bce6d98914e, type: 2}
-  - {fileID: 11400000, guid: 11aa0d7dd67d5484fa9f189320ab8468, type: 2}
+  audios: {fileID: 0}
 --- !u!1001 &6249968475860491566
 PrefabInstance:
   m_ObjectHideFlags: 0
