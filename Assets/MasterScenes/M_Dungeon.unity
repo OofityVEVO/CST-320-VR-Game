@@ -65012,6 +65012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44484ad95426c10419e9f0691ca1d048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OtherUIStuff: {fileID: 1182215175}
   interact: {fileID: 778291425}
   grab: {fileID: 932206791}
   throw_: {fileID: 1197364228}

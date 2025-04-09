@@ -8,6 +8,7 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class UIPlayer : MonoBehaviour
 {
+    public GameObject OtherUIStuff;
     public GameObject interact;
     public GameObject grab;
     public GameObject throw_;
@@ -54,6 +55,7 @@ public class UIPlayer : MonoBehaviour
         interact.SetActive(false);
         Done3.SetActive(false);
         panel.SetActive(false);
+        OtherUIStuff.SetActive(false);
         //Next1.SetActive(false);
 
     }
