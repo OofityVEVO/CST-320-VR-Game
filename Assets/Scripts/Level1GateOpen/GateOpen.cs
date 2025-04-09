@@ -18,6 +18,7 @@ public class GateOpen : MonoBehaviour
     {
         if (isOpening && currentRotation < RotationAmount)
         {
+            PrisonDoor.SetActive(false);
             float rotationStep = Mathf.Min(RotationSnap, RotationAmount - currentRotation);
 
             LeftDoor.transform.Rotate(0, rotationStep, 0);
