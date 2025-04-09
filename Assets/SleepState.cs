@@ -5,7 +5,7 @@ using UnityEngine;
 public class SleepState : MonoBehaviour
 {
     public soldierAnimation SoldierAnimation;
-    public DialogueScene guardsSleepingScene;
+    //public DialogueScene guardsSleepingScene;
 
     public bool isAsleep = false;
 
@@ -18,7 +18,7 @@ public class SleepState : MonoBehaviour
             SoldierAnimation.isRunning = false;
             SoldierAnimation.isSleep = true;
 
-            guardsSleepingScene.PlayAudio();
+            //guardsSleepingScene.PlayAudio();
         }
     }
 }
