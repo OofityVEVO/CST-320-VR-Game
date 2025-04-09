@@ -10,6 +10,8 @@ public class WizardChoice : MonoBehaviour
     public GameObject cage; // cage that holds the wizard
     public Transform star; // teleportation effect
 
+    public DialogueScene goodEndingScene;
+    public bool GoodEnd = false;
 
 
     // Start is called before the first frame update
@@ -49,6 +51,8 @@ public class WizardChoice : MonoBehaviour
         yield return new WaitForSeconds(wait3); // wait for the teleportation effect to play
 
         wizard.SetActive(false);
+
+        GoodEnd = true;
 
 
 

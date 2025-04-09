@@ -9,6 +9,7 @@ public class SleepPowderCollide : MonoBehaviour
     public GameObject GuardSummon;
 
     [Header("Audio Stuff")]
+    public DialogueScene PreviousDialogue_WizardTalk;
     public DialogueScene puzzleOccuring;
     public DialogueScene puzzleSolvedDialogue;
 
