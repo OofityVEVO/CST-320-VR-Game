@@ -64,7 +64,6 @@ public class SmashCage : MonoBehaviour
 
                 guardSleepSound.StartAudio();
 
-                panel.SetActive(true);
                 Destroy(gameObject);
                 cageBreakDialogueScene.PlayAudio();
             }

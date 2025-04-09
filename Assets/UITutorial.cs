@@ -28,7 +28,7 @@ public class UITutorial : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadSceneAsync("Level1Scene1");
+        SceneManager.LoadSceneAsync("M_Dungeon");
     }
 
     public void Click()

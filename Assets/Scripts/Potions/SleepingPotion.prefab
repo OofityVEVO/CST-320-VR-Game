@@ -159,7 +159,7 @@ MonoBehaviour:
   grabInteractable: {fileID: 2966387420695562380}
   forceThreshold: 5
   radius: 20
-  invincibleTime: 3
+  invincibleTime: 5
 --- !u!114 &2966387420695562380
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,26 +6,35 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/MasterScenes/MainMenu.unity
     guid: a0904cda5b8d080489145665b225f60e
   - enabled: 1
-    path: Assets/Scenes/Level1Scene1.unity
-    guid: 32a7ed7b235b0544aaf21c05e9bb61e9
+    path: Assets/MasterScenes/Loading.unity
+    guid: 1966cb9496a3c3547bc3cf75bf07cb85
   - enabled: 1
-    path: Assets/Scenes/Level1Scene2.unity
-    guid: 7887601b04fa88d4e8b3406be7b68c3e
+    path: Assets/MasterScenes/M_Dungeon.unity
+    guid: ecd3a1abd72272c4da036a26e2c31c4e
   - enabled: 1
+    path: Assets/MasterScenes/M_Armory.unity
+    guid: 3d39cb1e4c0a6b4468afb021294729fc
+  - enabled: 1
+    path: Assets/MasterScenes/M_Entrance.unity
+    guid: 81848d0bbe48dbb4f9056be1106f51de
+  - enabled: 1
+    path: Assets/MasterScenes/AF_EndScene.unity
+    guid: 5abadf05f11c357439a68c82e9d1bac0
+  - enabled: 0
     path: Assets/Scenes/AF_Armory.unity
     guid: 20d72ce9114440445bb8ee33f94fe429
-  - enabled: 1
+  - enabled: 0
+    path: Assets/Scenes/Level1Scene2.unity
+    guid: 7887601b04fa88d4e8b3406be7b68c3e
+  - enabled: 0
+    path: Assets/Scenes/Level1Scene1.unity
+    guid: 32a7ed7b235b0544aaf21c05e9bb61e9
+  - enabled: 0
     path: Assets/Scenes/AF_DungeonEntrance.unity
     guid: 9b22847ffea3f1d499c513b4119ebb52
-  - enabled: 1
-    path: Assets/Scenes/AF_EndScene.unity
-    guid: d169795c54d828c49a102048727e4854
-  - enabled: 1
-    path: Assets/Scenes/Loading.unity
-    guid: 1966cb9496a3c3547bc3cf75bf07cb85
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 500fcef300ebfa443b36fbadcf72bbd0, type: 2}
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: d87f76f0f88a6cd4aadbf3f221fefa07, type: 2}
