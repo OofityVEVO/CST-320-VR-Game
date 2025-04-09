@@ -4648,6 +4648,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SoldierAnimation: {fileID: 146532778}
+  guardsSleepingScene: {fileID: 0}
   isAsleep: 0
 --- !u!54 &146532783
 Rigidbody:
@@ -70713,6 +70714,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SoldierAnimation: {fileID: 1507772950}
+  guardsSleepingScene: {fileID: 0}
   isAsleep: 0
 --- !u!54 &1507772955
 Rigidbody:
@@ -83850,6 +83852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SoldierAnimation: {fileID: 146532778}
+  guardsSleepingScene: {fileID: 1652283953}
   isAsleep: 0
 --- !u!82 &1779591619
 AudioSource:
