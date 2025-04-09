@@ -22,7 +22,7 @@ public class animationTrigger : MonoBehaviour
             Debug.Log("Collision Detected");
             if(guardSpotScene != null)
             {
-                guardSpotScene.PlayAudio();
+                //guardSpotScene.PlayAudio();
             }
         }
     }
