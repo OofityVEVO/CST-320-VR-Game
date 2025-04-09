@@ -31,7 +31,7 @@ public class UITutorial : MonoBehaviour
         SceneManager.LoadSceneAsync("Level1Scene1");
     }
 
-    public void Turn()
+    public void Click()
     {
         click.SetActive(false);
         Next1.SetActive(false);
@@ -40,7 +40,7 @@ public class UITutorial : MonoBehaviour
 
     public void walk()
     {
-        turn.SetActive(false);
+        Walk.SetActive(false);
         Next2.SetActive(false);
     }
 }
