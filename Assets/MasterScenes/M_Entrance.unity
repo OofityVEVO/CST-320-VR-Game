@@ -33212,7 +33212,6 @@ GameObject:
   - component: {fileID: 609814348}
   - component: {fileID: 609814347}
   - component: {fileID: 609814351}
-  - component: {fileID: 609814353}
   - component: {fileID: 609814352}
   m_Layer: 0
   m_Name: TriggerCutscene
@@ -33327,7 +33326,7 @@ MonoBehaviour:
   - {fileID: 1221441639}
   - {fileID: 1022717791}
   MissPlane: {fileID: 726744898}
-  GuardsHalt: {fileID: 609814353}
+  GuardsHalt: {fileID: 787995778}
 --- !u!114 &609814352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33345,24 +33344,6 @@ MonoBehaviour:
   Countdown: {fileID: 1197454345}
   PlayerTeleportLocation: {fileID: 74307447}
   MochiTeleportLocation: {fileID: 232990766}
---- !u!114 &609814353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 609814346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 613853e386ca6f140a6ce17464a2f008, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  manager: {fileID: 1512261353}
-  keepPlaying: 1
-  scene:
-  - {fileID: 11400000, guid: 21df8e27e3123bb44851763428b801aa, type: 2}
-  - {fileID: 11400000, guid: 300948d3721eac046aa66288de87bde5, type: 2}
-  - {fileID: 11400000, guid: f5804072d0c5c4e4498ae65055d98f23, type: 2}
 --- !u!1001 &610793915
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45751,6 +45732,56 @@ ParticleSystem:
         m_PostInfinity: 2
         m_RotationOrder: 4
     vectorLabel1_3: W
+--- !u!1 &787995777
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 787995779}
+  - component: {fileID: 787995778}
+  m_Layer: 0
+  m_Name: Cutscene
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &787995778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787995777}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 613853e386ca6f140a6ce17464a2f008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 1512261353}
+  keepPlaying: 1
+  scene:
+  - {fileID: 11400000, guid: 21df8e27e3123bb44851763428b801aa, type: 2}
+  - {fileID: 11400000, guid: 300948d3721eac046aa66288de87bde5, type: 2}
+  - {fileID: 11400000, guid: f5804072d0c5c4e4498ae65055d98f23, type: 2}
+--- !u!4 &787995779
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 787995777}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 10, y: 1.83, z: 12.5}
+  m_LocalScale: {x: 1, y: 3.4621, z: 4.2773}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &815614811
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -92800,6 +92831,7 @@ SceneRoots:
   - {fileID: 1219952751}
   - {fileID: 2041690759}
   - {fileID: 414832122}
+  - {fileID: 787995779}
   - {fileID: 609814350}
   - {fileID: 1696233511}
   - {fileID: 6249968475860491566}

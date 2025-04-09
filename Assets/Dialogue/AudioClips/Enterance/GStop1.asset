@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   character: 0
   line: {fileID: 8300000, guid: f6a8d90f3f03c0a44a64b8b9e725f943, type: 3}
-  timeAfterSound: 0
+  timeAfterSound: 2.5
