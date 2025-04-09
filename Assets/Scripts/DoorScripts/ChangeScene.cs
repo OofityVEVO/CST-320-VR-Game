@@ -10,7 +10,8 @@ public class ChangeScene : MonoBehaviour
     private Collider collider_;
     private Animator animator;
 
-
+    public WizardChoice wizardChoice;
+    public DialogueScene badEnding;
 
     void Start()
     {
@@ -33,7 +34,7 @@ public class ChangeScene : MonoBehaviour
     {
         if(key.CompareTag("key"))
         {
-            hasKey = true;
+            CheckEnding();
 
         }
 
@@ -43,6 +44,17 @@ public class ChangeScene : MonoBehaviour
             if (key.gameObject.tag == "Player")
                 SceneManager.LoadScene(sceneName);
         }
+    }
+
+    private void CheckEnding()
+    {
+        hasKey = true;
+
+        if(wizardChoice.GoodEnd == false)
+        {
+            badEnding.PlayAudio();
+        }
+
     }
 
 }
