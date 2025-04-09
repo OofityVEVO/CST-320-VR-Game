@@ -14,16 +14,18 @@ public class animationTrigger : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
+            if (guardSpotScene != null)
+            {
+                guardSpotScene.PlayAudio();
+            }
+
             //runs animations for the guards once the player passes the door
             guard1.GetComponent<BalconyAnimation>().enabled = true;
             guard2.GetComponent<BalconyAnimation>().enabled = true;
             timer.SetActive(true);
 
             Debug.Log("Collision Detected");
-            if(guardSpotScene != null)
-            {
-                //guardSpotScene.PlayAudio();
-            }
+            
         }
     }
 }

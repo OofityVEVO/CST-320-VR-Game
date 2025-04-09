@@ -20,7 +20,7 @@ public class PotionShatterable : MonoBehaviour
     {
         grabInteractable = GetComponent<XRGrabInteractable>();
 
-        Mochi = GameObject.Find("Mochi");
+        Mochi = GameObject.Find("Mochi_V1");
         holdingScript = Mochi.GetComponent<HoldingObject>();
     }
 
