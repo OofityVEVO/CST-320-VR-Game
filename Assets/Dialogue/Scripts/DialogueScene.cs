@@ -29,7 +29,7 @@ public class DialogueScene : MonoBehaviour
         }
     }
 
-    public void StopAudiio()
+    public void StopAudio()
     {
         keepPlaying = false;
     }

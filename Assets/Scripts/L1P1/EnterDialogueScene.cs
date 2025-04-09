@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnterDialogueScene : MonoBehaviour
 {
     public DialogueScene dialogueScene;
+    public DialogueScene previousScene;
     private GameObject panel;
 
     void Start()
@@ -13,8 +14,9 @@ public class EnterDialogueScene : MonoBehaviour
     }
     void OnTriggerEnter()
     {
+        previousScene.StopAudio();
         dialogueScene.PlayAudio();
-        panel.SetActive(true);
+        //panel.SetActive(true);
 
     }
 }

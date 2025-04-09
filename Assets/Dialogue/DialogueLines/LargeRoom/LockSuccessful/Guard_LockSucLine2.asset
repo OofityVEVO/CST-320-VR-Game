@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cafdcc56eb3770458f769c79aca6d14, type: 3}
   m_Name: Guard_LockSucLine2
   m_EditorClassIdentifier: 
-  character: 0
-  line: {fileID: 0}
+  character: 8
+  line: {fileID: 8300000, guid: 104abd83b5495d54189138fd83af0479, type: 3}
   timeAfterSound: 0

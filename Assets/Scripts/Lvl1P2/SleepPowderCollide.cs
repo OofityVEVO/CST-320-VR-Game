@@ -20,7 +20,7 @@ public class SleepPowderCollide : MonoBehaviour
             if (holder != null)
             {
                 holder.InstantiateGameObject(sleepingPower);
-                puzzleOccuring.StopAudiio();
+                puzzleOccuring.StopAudio();
                 puzzleSolvedDialogue.PlayAudio();
             }
 
