@@ -8,6 +8,8 @@ public class ActivateGuards : MonoBehaviour
     [SerializeField] GameObject[] Guards;
     [SerializeField] GameObject MissPlane;
 
+    public DialogueScene GuardsHalt;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -22,6 +24,9 @@ public class ActivateGuards : MonoBehaviour
 
                 child.GetComponent<ToLocationGuard>().Begin();
             }
+
+            GuardsHalt.PlayAudio();
+
 
             MissPlane.SetActive(true);
             Destroy(gameObject);

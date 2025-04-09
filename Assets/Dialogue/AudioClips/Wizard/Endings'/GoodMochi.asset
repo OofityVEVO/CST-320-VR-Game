@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: GoodMochi
   m_EditorClassIdentifier: 
   character: 2
-  line: {fileID: 8300000, guid: 495324e4e765e6e45b2477fc9258d84f, type: 3}
+  line: {fileID: 8300000, guid: 29c015f1d70c91943b7dae3366908509, type: 3}
   timeAfterSound: 0
