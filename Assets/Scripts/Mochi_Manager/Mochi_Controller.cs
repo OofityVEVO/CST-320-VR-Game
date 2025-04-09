@@ -37,14 +37,14 @@ public class Mochi_Controller : MonoBehaviour
         }
 
         // Don't enable MochiManager at start
-        if (mochiManager != null)
-        {
-            mochiManager.enabled = false;
-            if (mochiManager._navMeshAgent != null)
-            {
-                mochiManager._navMeshAgent.enabled = false;
-            }
-        }
+        //if (mochiManager != null)
+        //{
+        //    mochiManager.enabled = false;
+        //    if (mochiManager._navMeshAgent != null)
+        //    {
+        //        mochiManager._navMeshAgent.enabled = false;
+        //    }
+        //}
     }
 
     private void OnDestroy()
