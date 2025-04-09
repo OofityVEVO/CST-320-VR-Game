@@ -62663,7 +62663,7 @@ MonoBehaviour:
   climbDuration: 2
   source: {fileID: 0}
   doorOpen: {fileID: 8300000, guid: 20e0bf66763c94349bfe677f597312d5, type: 3}
-  beginDialogueScene: {fileID: 1635701716}
+  beginDialogueScene: {fileID: 1149968060}
   DungeonDoorOpenScene: {fileID: 1242940553}
 --- !u!65 &1242940551
 BoxCollider:
