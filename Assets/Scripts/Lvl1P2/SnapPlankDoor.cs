@@ -18,7 +18,7 @@ public class SnapPlankDoor : MonoBehaviour
     public AudioSource source;
     public AudioClip placePlank;
     public DialogueScene lockedPlankScene;
-    public DialogueScene spotGuardsScene;
+    //public DialogueScene spotGuardsScene;
 
     void Start()
     {
@@ -46,7 +46,6 @@ public class SnapPlankDoor : MonoBehaviour
 
     private IEnumerator SnapPlankDoorTimer(float delay)
     {
-        spotGuardsScene.StopAudio();
 
         yield return new WaitForSeconds(delay);
 
