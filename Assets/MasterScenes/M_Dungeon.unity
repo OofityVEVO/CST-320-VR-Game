@@ -63383,6 +63383,8 @@ MonoBehaviour:
   guard2_balcony: {fileID: 1807677282}
   guard1_arrest: {fileID: 146532779}
   guard2_arrest: {fileID: 1507772951}
+  wizard: {fileID: 0}
+  sourceBehindDoor: {fileID: 0}
   sources: []
 --- !u!114 &1339274505
 MonoBehaviour:
@@ -66426,7 +66428,6 @@ MonoBehaviour:
   parent: {fileID: 1416108220}
   cage: {fileID: 441744512}
   star: {fileID: 1928401739}
-  isFree: 0
 --- !u!4 &1416108220
 Transform:
   m_ObjectHideFlags: 0
@@ -70098,10 +70099,22 @@ PrefabInstance:
       propertyPath: mochiManager
       value: 
       objectReference: {fileID: 1546136365}
+    - target: {fileID: 4179086588429728572, guid: dd2c833c8446eba41aeeba0bd3fceee4, type: 3}
+      propertyPath: anchorPoint
+      value: 
+      objectReference: {fileID: 1994588629}
     - target: {fileID: 7138944600782601335, guid: dd2c833c8446eba41aeeba0bd3fceee4, type: 3}
       propertyPath: tr
       value: 
       objectReference: {fileID: 1546136363}
+    - target: {fileID: 7288910242229844203, guid: dd2c833c8446eba41aeeba0bd3fceee4, type: 3}
+      propertyPath: m_Name
+      value: ObjectHolder
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201956327497813613, guid: dd2c833c8446eba41aeeba0bd3fceee4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.35
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -73899,6 +73912,8 @@ MonoBehaviour:
   sleepingPower: {fileID: 6661129097088090337, guid: a085162128d1bf248ba0533431ad817b, type: 3}
   GuardTimer: {fileID: 732966076}
   GuardSummon: {fileID: 2083291974}
+  puzzleOccuring: {fileID: 891092393}
+  puzzleSolvedDialogue: {fileID: 891092393}
 --- !u!65 &1681307298
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -88212,6 +88227,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.000001, y: 5, z: 0.27195555}
   m_Center: {x: -2.5000005, y: 2.5, z: -0.13597777}
+--- !u!4 &1994588629 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8201956327497813613, guid: dd2c833c8446eba41aeeba0bd3fceee4, type: 3}
+  m_PrefabInstance: {fileID: 1546136361}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1994658274 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 154028, guid: 73c08e84ae0965a4b9674d1c89f21e59, type: 3}

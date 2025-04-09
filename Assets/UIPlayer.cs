@@ -52,13 +52,13 @@ public class UIPlayer : MonoBehaviour
     public void Interact()
     {
         interact.SetActive(false);
-        Next1.SetActive(false);
+        //Next1.SetActive(false);
         
     }
 
     public void Commands()
     {
-        commands.SetActive(false);
+        //commands.SetActive(false);
         Done3.SetActive(false);
         panel.SetActive(false);
     }
