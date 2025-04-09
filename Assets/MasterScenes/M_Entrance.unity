@@ -20616,6 +20616,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 118552, guid: 592f797b391c93546aa17a518bcd4141, type: 3}
       insertIndex: -1
       addedObject: {fileID: 373192443}
+    - targetCorrespondingSourceObject: {fileID: 118552, guid: 592f797b391c93546aa17a518bcd4141, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 373192444}
   m_SourcePrefab: {fileID: 100100000, guid: 592f797b391c93546aa17a518bcd4141, type: 3}
 --- !u!4 &373192433 stripped
 Transform:
@@ -20728,6 +20731,22 @@ MonoBehaviour:
   - {fileID: 1545834693}
   - {fileID: 248714390}
   - {fileID: 676410460}
+--- !u!114 &373192444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 373192434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 613853e386ca6f140a6ce17464a2f008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 1512261353}
+  keepPlaying: 1
+  scene:
+  - {fileID: 11400000, guid: 06fc21b4310464f47b9cf975873ef912, type: 2}
 --- !u!1 &375831622
 GameObject:
   m_ObjectHideFlags: 0
@@ -33193,9 +33212,8 @@ GameObject:
   - component: {fileID: 609814348}
   - component: {fileID: 609814347}
   - component: {fileID: 609814351}
-  - component: {fileID: 609814352}
-  - component: {fileID: 609814354}
   - component: {fileID: 609814353}
+  - component: {fileID: 609814352}
   m_Layer: 0
   m_Name: TriggerCutscene
   m_TagString: Untagged
@@ -33309,6 +33327,7 @@ MonoBehaviour:
   - {fileID: 1221441639}
   - {fileID: 1022717791}
   MissPlane: {fileID: 726744898}
+  GuardsHalt: {fileID: 609814353}
 --- !u!114 &609814352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33341,24 +33360,9 @@ MonoBehaviour:
   manager: {fileID: 1512261353}
   keepPlaying: 1
   scene:
-  - {fileID: 11400000, guid: 3ddc2897e064898449184444b8447d70, type: 2}
-  - {fileID: 11400000, guid: 7fb0283b0f95163449757d2ffe3a0aca, type: 2}
-  - {fileID: 11400000, guid: 11aa0d7dd67d5484fa9f189320ab8468, type: 2}
-  - {fileID: 11400000, guid: 2a782e65a271c254f92d7bce6d98914e, type: 2}
-  - {fileID: 11400000, guid: 11aa0d7dd67d5484fa9f189320ab8468, type: 2}
---- !u!114 &609814354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 609814346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2850e2380f815346b60bdccb3bdda44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  audios: {fileID: 609814353}
+  - {fileID: 11400000, guid: 21df8e27e3123bb44851763428b801aa, type: 2}
+  - {fileID: 11400000, guid: 300948d3721eac046aa66288de87bde5, type: 2}
+  - {fileID: 11400000, guid: f5804072d0c5c4e4498ae65055d98f23, type: 2}
 --- !u!1001 &610793915
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -92580,6 +92584,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6130191330354909825, guid: f24aff942c030f54a8d90d0cd8eac301, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2509371941798852058}
+    - targetCorrespondingSourceObject: {fileID: 6130191330354909825, guid: f24aff942c030f54a8d90d0cd8eac301, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2509371941798852059}
   m_SourcePrefab: {fileID: 100100000, guid: f24aff942c030f54a8d90d0cd8eac301, type: 3}
 --- !u!4 &2509371941798852056 stripped
 Transform:
@@ -92603,7 +92610,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2850e2380f815346b60bdccb3bdda44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audios: {fileID: 0}
+  audios: {fileID: 2509371941798852059}
+--- !u!114 &2509371941798852059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2509371941798852057}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 613853e386ca6f140a6ce17464a2f008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  manager: {fileID: 1512261353}
+  keepPlaying: 1
+  scene:
+  - {fileID: 11400000, guid: 3ddc2897e064898449184444b8447d70, type: 2}
+  - {fileID: 11400000, guid: 7fb0283b0f95163449757d2ffe3a0aca, type: 2}
 --- !u!1001 &6249968475860491566
 PrefabInstance:
   m_ObjectHideFlags: 0
