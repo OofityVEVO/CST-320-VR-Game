@@ -33,6 +33,7 @@ public class PuzzleOne : MonoBehaviour
 
     [Header("SceneAudio")]
     public DialogueScene beginDialogueScene;
+    public DialogueScene cageBreakScene;
     public DialogueScene DungeonDoorOpenScene;
 
 
@@ -74,6 +75,7 @@ public class PuzzleOne : MonoBehaviour
 
     IEnumerator ClimbDownAndOpenDoor(GameObject Mochi)
     {
+        cageBreakScene.StopAudio();
         Mochi_Controller controller = Mochi.GetComponent<Mochi_Controller>();
         controller.EnterCutsceneMode();
         Debug.Log("Mochi is on top of the cell bars!");
