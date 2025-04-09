@@ -41,7 +41,7 @@ public class ChangeScene : MonoBehaviour
         {
             // If the player collides with the object, load the scene
             if (key.gameObject.tag == "Player")
-                SceneManager.LoadScene("AF_Armory");
+                SceneManager.LoadScene(sceneName);
         }
     }
 
