@@ -33332,8 +33332,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerXROrigin: {fileID: 172123333}
+  Mochi: {fileID: 0}
   Countdown: {fileID: 1197454345}
-  TeleportLocation: {fileID: 74307447}
+  PlayerTeleportLocation: {fileID: 2509371941798852056}
+  MochiTeleportLocation: {fileID: 414832121}
 --- !u!114 &609814353
 MonoBehaviour:
   m_ObjectHideFlags: 0
