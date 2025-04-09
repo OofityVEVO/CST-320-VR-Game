@@ -5,8 +5,10 @@ using UnityEngine;
 public class SetForCutscene : MonoBehaviour
 {
     [SerializeField] GameObject PlayerXROrigin;
+    [SerializeField] GameObject Mochi;
     [SerializeField] GameObject Countdown;
-    [SerializeField] GameObject TeleportLocation;
+    [SerializeField] GameObject PlayerTeleportLocation;
+    [SerializeField] GameObject MochiTeleportLocation;
     PlayerMovement playerScript;
 
     void Start()
@@ -17,7 +19,8 @@ public class SetForCutscene : MonoBehaviour
     public void StartCutscene()
     {
         playerScript.enabled = false;
-        PlayerXROrigin.transform.SetPositionAndRotation(TeleportLocation.transform.position, TeleportLocation.transform.rotation);
+        PlayerXROrigin.transform.SetPositionAndRotation(PlayerTeleportLocation.transform.position, PlayerTeleportLocation.transform.rotation);
+        Mochi.transform.SetPositionAndRotation(MochiTeleportLocation.transform.position, MochiTeleportLocation.transform.rotation);
         Countdown.SetActive(true);
     }
 
