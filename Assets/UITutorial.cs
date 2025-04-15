@@ -9,21 +9,20 @@ using UnityEngine.XR.Interaction.Toolkit;
 public class UITutorial : MonoBehaviour
 {
     private GameObject click;
-    private GameObject turn;
+    private GameObject Turn;
     private GameObject Walk;
     private GameObject Next1;
     private GameObject Next2;
+    private GameObject Grab;
 
     private void Start()
     {
+        Grab = GameObject.Find("Grab");
         click = GameObject.Find("Click");
-        turn = GameObject.Find("Turn");
+        Turn = GameObject.Find("Turn");
         Walk = GameObject.Find("Walk");
         Next1 = GameObject.Find("Next1");
         Next2 = GameObject.Find("Next2");
-
-
-
     }
 
     public void StartGame()
@@ -41,6 +40,18 @@ public class UITutorial : MonoBehaviour
     public void walk()
     {
         Walk.SetActive(false);
+        Next1.SetActive(false);
+    }
+
+    public void grab()
+    {
+        Grab.SetActive(false);
+        Next1.SetActive(false);
+    }
+
+    public void turn()
+    {
+        Turn.SetActive(false);
         Next2.SetActive(false);
     }
 }
