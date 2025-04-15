@@ -10595,7 +10595,7 @@ MonoBehaviour:
   playerHead: {fileID: 369717972}
   followSpeed: 5
   offset: {x: 0, y: 0, z: 1.5}
-  uiPanel: {fileID: 747634004}
+  uiPanel: {fileID: 0}
   inputSource: 5
   openUIAudio: {fileID: 0}
   closeUIAudio: {fileID: 0}
@@ -32637,7 +32637,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &747634005
 RectTransform:
   m_ObjectHideFlags: 0
@@ -35048,7 +35048,7 @@ MonoBehaviour:
   playerHead: {fileID: 369717972}
   followSpeed: 5
   offset: {x: 0, y: -0.05, z: 2.5}
-  uiPanel: {fileID: 747634004}
+  uiPanel: {fileID: 0}
   inputSource: 5
   openUIAudio: {fileID: 8300000, guid: c63877af96cfec3499e74c2028e71d10, type: 3}
   closeUIAudio: {fileID: 8300000, guid: c63877af96cfec3499e74c2028e71d10, type: 3}
@@ -61221,51 +61221,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.2753859, y: 5.009504, z: 1.2753857}
   m_Center: {x: 0.00000166893, y: 2.504752, z: 0}
---- !u!1 &1182215175
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1182215177}
-  - component: {fileID: 1182215176}
-  m_Layer: 0
-  m_Name: EnableUILOL
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1182215176
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1182215175}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85d9adcffb6a11a41beae742069843c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Panel: {fileID: 747634004}
---- !u!4 &1182215177
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1182215175}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.5274296, y: 2.2518117, z: -0.9627705}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1182997109
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -65201,14 +65156,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44484ad95426c10419e9f0691ca1d048, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  OtherUIStuff: {fileID: 1182215175}
-  interact: {fileID: 778291425}
-  grab: {fileID: 932206791}
-  throw_: {fileID: 1197364228}
-  Done1: {fileID: 1754109000}
-  Done2: {fileID: 2018648286}
-  Done3: {fileID: 708939029}
-  panel: {fileID: 747634004}
+  OtherUIStuff: {fileID: 0}
+  interact: {fileID: 0}
+  grab: {fileID: 0}
+  throw_: {fileID: 0}
+  Done1: {fileID: 0}
+  Done2: {fileID: 0}
+  Done3: {fileID: 0}
+  panel: {fileID: 0}
 --- !u!1001 &1339280516
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -97041,5 +96996,4 @@ SceneRoots:
   - {fileID: 794999739}
   - {fileID: 1557536767}
   - {fileID: 2103900020}
-  - {fileID: 1182215177}
   - {fileID: 238751350}
